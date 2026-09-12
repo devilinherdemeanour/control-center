@@ -1,5 +1,34 @@
 [
   {
+    "id": "ec8daa11-f3bf-458f-807a-8f0850513da1",
+    "title": "Visible Submit Retest 1789245136656",
+    "slug": "visible-submit-retest-1789245136656",
+    "excerpt": "Visible submit retest",
+    "content": "Content for visible sticky create button.",
+    "author": "QA",
+    "status": "published",
+    "tags": [
+      "visible",
+      "submit"
+    ],
+    "coverImage": "",
+    "createdAt": "2026-09-12T20:32:17.859Z",
+    "updatedAt": "2026-09-12T20:32:17.859Z"
+  },
+  {
+    "id": "bcdd3a6f-866a-482b-8ec3-45a167efe685",
+    "title": "Mouse Click Test 1789245072933",
+    "slug": "mouse-click-test-1789245072933",
+    "excerpt": "",
+    "content": "Testing coordinate clicks",
+    "author": "Admin",
+    "status": "published",
+    "tags": [],
+    "coverImage": "",
+    "createdAt": "2026-09-12T20:31:13.062Z",
+    "updatedAt": "2026-09-12T20:31:13.062Z"
+  },
+  {
     "id": "32b2a018-f7d2-4ac8-aef5-e0d8da79a041",
     "title": "Mobile Retest 1789243157938",
     "slug": "mobile-retest-1789243157938",

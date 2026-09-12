@@ -82,6 +82,13 @@ export class BlogFormComponent implements OnInit {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       this.error = 'Please fill in the required fields (title and content) before saving.';
+      const firstInvalid =
+        document.querySelector('.form label.invalid input, .form label.invalid textarea') ||
+        document.querySelector('#blog-title');
+      if (firstInvalid instanceof HTMLElement) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstInvalid.focus();
+      }
       return;
     }
 

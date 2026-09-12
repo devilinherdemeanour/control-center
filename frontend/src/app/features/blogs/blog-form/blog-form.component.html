@@ -4,7 +4,18 @@
       <h2>{{ isEdit ? 'Edit blog' : 'New blog' }}</h2>
       <p>Posts are written to <code>backend/data/blogs.json</code>.</p>
     </div>
-    <a class="btn ghost" routerLink="/blogs">Back</a>
+    <div class="head-actions">
+      <a class="btn ghost" routerLink="/blogs">Back</a>
+      <button
+        id="blog-submit"
+        class="btn primary"
+        type="button"
+        (click)="submit($event)"
+        [disabled]="saving"
+      >
+        {{ saving ? 'Saving…' : isEdit ? 'Update blog' : 'Create blog' }}
+      </button>
+    </div>
   </div>
 
   <div class="state" *ngIf="loading">Loading blog…</div>
@@ -12,17 +23,6 @@
   <div class="state success" *ngIf="success">{{ success }}</div>
 
   <form class="panel form" [formGroup]="form" (ngSubmit)="submit($event)" *ngIf="!loading">
-    <label [class.invalid]="submitted && form.controls.title.invalid">
-      <span>Title *</span>
-      <input id="blog-title" formControlName="title" placeholder="Post title" />
-      <small *ngIf="submitted && form.controls.title.invalid">Title is required.</small>
-    </label>
-
-    <label>
-      <span>Slug</span>
-      <input id="blog-slug" formControlName="slug" placeholder="auto-from-title" />
-    </label>
-
     <div class="status-field">
       <span class="status-label">Status</span>
       <div class="status-toggle" role="group" aria-label="Publication status">
@@ -46,16 +46,27 @@
       </div>
     </div>
 
+    <label [class.invalid]="submitted && form.controls.title.invalid">
+      <span>Title *</span>
+      <input id="blog-title" formControlName="title" placeholder="Post title" />
+      <small *ngIf="submitted && form.controls.title.invalid">Title is required.</small>
+    </label>
+
     <div class="grid two">
+      <label>
+        <span>Slug</span>
+        <input id="blog-slug" formControlName="slug" placeholder="auto-from-title" />
+      </label>
       <label>
         <span>Author</span>
         <input id="blog-author" formControlName="author" />
       </label>
-      <label>
-        <span>Tags</span>
-        <input id="blog-tags" formControlName="tags" placeholder="news, product, launch" />
-      </label>
     </div>
+
+    <label>
+      <span>Tags</span>
+      <input id="blog-tags" formControlName="tags" placeholder="news, product, launch" />
+    </label>
 
     <label>
       <span>Cover image URL</span>
@@ -64,18 +75,18 @@
 
     <label>
       <span>Excerpt</span>
-      <textarea id="blog-excerpt" formControlName="excerpt" rows="3"></textarea>
+      <textarea id="blog-excerpt" formControlName="excerpt" rows="2"></textarea>
     </label>
 
     <label [class.invalid]="submitted && form.controls.content.invalid">
       <span>Content *</span>
-      <textarea id="blog-content" formControlName="content" rows="12"></textarea>
+      <textarea id="blog-content" formControlName="content" rows="8"></textarea>
       <small *ngIf="submitted && form.controls.content.invalid">Content is required.</small>
     </label>
 
     <div class="actions">
       <button
-        id="blog-submit"
+        id="blog-submit-bottom"
         class="btn primary"
         type="button"
         (click)="submit($event)"
