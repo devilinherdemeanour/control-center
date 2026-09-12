@@ -51,7 +51,12 @@ export class AboutEditorComponent implements OnInit {
       next: () => {
         this.saving = false;
         this.success = 'About page saved to about.json.';
-        setTimeout(() => this.feedback?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0);
+        setTimeout(() => {
+          const el =
+            this.feedback?.nativeElement ||
+            (document.querySelector('.state.success') as HTMLElement | null);
+          el?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 0);
       },
       error: (err) => {
         this.saving = false;

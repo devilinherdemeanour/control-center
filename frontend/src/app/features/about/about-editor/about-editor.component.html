@@ -4,15 +4,27 @@
       <h2>About page</h2>
       <p>Edit the public about story, mission, and team intro.</p>
     </div>
+    <div class="head-actions">
+      <button
+        id="about-submit"
+        class="btn primary"
+        type="button"
+        (click)="submit()"
+        [disabled]="saving || loading"
+      >
+        {{ saving ? 'Saving…' : 'Save about page' }}
+      </button>
+    </div>
   </div>
 
   <div class="state" *ngIf="loading">Loading about content…</div>
-  <div class="state error" *ngIf="error && loading">{{ error }}</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+  <div class="state success" *ngIf="success" #feedback>{{ success }}</div>
 
   <form class="panel form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading">
     <label>
       <span>Headline</span>
-      <input formControlName="headline" />
+      <input id="about-headline" formControlName="headline" />
     </label>
     <label>
       <span>Subheadline</span>
@@ -20,26 +32,26 @@
     </label>
     <label>
       <span>Body</span>
-      <textarea formControlName="body" rows="8"></textarea>
+      <textarea formControlName="body" rows="6"></textarea>
     </label>
     <div class="grid two">
       <label>
         <span>Mission</span>
-        <textarea formControlName="mission" rows="4"></textarea>
+        <textarea formControlName="mission" rows="3"></textarea>
       </label>
       <label>
         <span>Vision</span>
-        <textarea formControlName="vision" rows="4"></textarea>
+        <textarea formControlName="vision" rows="3"></textarea>
       </label>
     </div>
     <label>
       <span>Team intro</span>
-      <textarea formControlName="teamIntro" rows="4"></textarea>
+      <textarea formControlName="teamIntro" rows="3"></textarea>
     </label>
 
-    <div class="actions" #feedback>
+    <div class="actions">
       <button
-        id="about-submit"
+        id="about-submit-bottom"
         class="btn primary"
         type="button"
         (click)="submit()"

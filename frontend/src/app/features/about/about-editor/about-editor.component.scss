@@ -1,5 +1,15 @@
 .page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
   margin-bottom: 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 0.75rem 0;
+  background: linear-gradient(180deg, rgba(215, 227, 234, 0.96), rgba(232, 240, 242, 0.92));
+  backdrop-filter: blur(8px);
 }
 
 .page-head h2 {
@@ -11,6 +21,12 @@
 .page-head p {
   margin: 0.35rem 0 0;
   color: #5a6b74;
+}
+
+.head-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-shrink: 0;
 }
 
 .panel,
