@@ -15,6 +15,7 @@ export class BlogFormComponent implements OnInit {
   saving = false;
   error = '';
   success = '';
+  submitted = false;
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(160)]],
@@ -65,8 +66,17 @@ export class BlogFormComponent implements OnInit {
   }
 
   submit(): void {
+    this.submitted = true;
+    this.error = '';
+    this.success = '';
+
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      this.error = 'Please fill in the required fields (title and content) before saving.';
+      return;
+    }
+
+    if (this.saving) {
       return;
     }
 
@@ -86,22 +96,24 @@ export class BlogFormComponent implements OnInit {
     };
 
     this.saving = true;
-    this.error = '';
-    this.success = '';
 
     const request$ = this.id
       ? this.blogService.update(this.id, payload)
       : this.blogService.create(payload);
 
     request$.subscribe({
-      next: () => {
+      next: (saved) => {
         this.saving = false;
-        this.success = this.id ? 'Blog updated.' : 'Blog created.';
-        this.router.navigate(['/blogs']);
+        this.success = this.id
+          ? `Blog updated (${saved.status}).`
+          : `Blog created (${saved.status}).`;
+        setTimeout(() => this.router.navigate(['/blogs']), 400);
       },
-      error: () => {
+      error: (err) => {
         this.saving = false;
-        this.error = 'Could not save blog.';
+        this.error =
+          (err && err.error && err.error.error) ||
+          'Could not save blog. Check that the API is running on port 4521.';
       },
     });
   }

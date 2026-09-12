@@ -1,5 +1,65 @@
 [
   {
+    "id": "301db962-7aa0-496d-901b-ac89ff03b21d",
+    "title": "UI Fix Verify",
+    "slug": "ui-fix-verify",
+    "excerpt": "e",
+    "content": "hello",
+    "author": "Tester",
+    "status": "published",
+    "tags": [
+      "test",
+      "demo"
+    ],
+    "coverImage": "",
+    "createdAt": "2026-09-12T19:10:48.321Z",
+    "updatedAt": "2026-09-12T19:10:48.321Z"
+  },
+  {
+    "id": "c7ac9b73-5b6f-4843-aee5-c0770550aba4",
+    "title": "Status Tag Fix Test",
+    "slug": "status-tag-fix-test",
+    "excerpt": "x",
+    "content": "body",
+    "author": "Tester",
+    "status": "published",
+    "tags": [
+      "test",
+      "demo"
+    ],
+    "coverImage": "",
+    "createdAt": "2026-09-12T19:07:43.765Z",
+    "updatedAt": "2026-09-12T19:07:43.765Z"
+  },
+  {
+    "id": "cc497c59-70d3-4c5f-92fe-b943a7c4153e",
+    "title": "Manual Test Post",
+    "slug": "manual-test-post",
+    "excerpt": "Created during manual testing",
+    "content": "This post was created to verify the admin panel CRUD flow against JSON storage.",
+    "author": "Tester",
+    "status": "draft",
+    "tags": [],
+    "coverImage": "",
+    "createdAt": "2026-09-12T18:59:41.058Z",
+    "updatedAt": "2026-09-12T18:59:41.058Z"
+  },
+  {
+    "id": "2d554ccc-fda1-4fc6-b10b-dcd1d6113153",
+    "title": "API Smoke Blog",
+    "slug": "api-smoke-blog",
+    "excerpt": "smoke",
+    "content": "Created via curl",
+    "author": "API",
+    "status": "draft",
+    "tags": [
+      "api"
+    ],
+    "coverImage": "",
+    "createdAt": "2026-09-12T18:36:43.164Z",
+    "updatedAt": "2026-09-12T18:36:43.164Z"
+  },
+  {
     "id": "blog-1",
     "title": "Welcome to the Admin Panel",
     "slug": "welcome-to-the-admin-panel",
@@ -7,7 +67,10 @@
     "content": "This admin panel lets you create and edit website content without touching code. Blog posts, about page copy, static pages, and site settings are all stored in JSON files on the server.\n\nUse the sidebar to navigate between content types and start publishing.",
     "author": "Admin",
     "status": "published",
-    "tags": ["announcement", "admin"],
+    "tags": [
+      "announcement",
+      "admin"
+    ],
     "coverImage": "",
     "createdAt": "2026-09-01T10:00:00.000Z",
     "updatedAt": "2026-09-01T10:00:00.000Z"
@@ -20,7 +83,10 @@
     "content": "Each collection (blogs, pages, settings, about) maps to a JSON file under backend/data. Create, update, and delete operations rewrite the file so changes survive server restarts.\n\nWhen you are ready for production, swap the JSON store for a real database with the same route shapes.",
     "author": "Admin",
     "status": "draft",
-    "tags": ["architecture", "backend"],
+    "tags": [
+      "architecture",
+      "backend"
+    ],
     "coverImage": "",
     "createdAt": "2026-09-05T14:30:00.000Z",
     "updatedAt": "2026-09-05T14:30:00.000Z"

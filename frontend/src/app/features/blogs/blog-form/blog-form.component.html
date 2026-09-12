@@ -12,9 +12,10 @@
   <div class="state success" *ngIf="success">{{ success }}</div>
 
   <form class="panel form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading">
-    <label>
-      <span>Title</span>
+    <label [class.invalid]="submitted && form.controls.title.invalid">
+      <span>Title *</span>
       <input formControlName="title" placeholder="Post title" />
+      <small *ngIf="submitted && form.controls.title.invalid">Title is required.</small>
     </label>
 
     <div class="grid two">
@@ -52,15 +53,18 @@
       <textarea formControlName="excerpt" rows="3"></textarea>
     </label>
 
-    <label>
-      <span>Content</span>
+    <label [class.invalid]="submitted && form.controls.content.invalid">
+      <span>Content *</span>
       <textarea formControlName="content" rows="12"></textarea>
+      <small *ngIf="submitted && form.controls.content.invalid">Content is required.</small>
     </label>
 
     <div class="actions">
-      <button class="btn primary" type="submit" [disabled]="saving">
+      <button class="btn primary" type="submit" (click)="submit()" [disabled]="saving">
         {{ saving ? 'Saving…' : isEdit ? 'Update blog' : 'Create blog' }}
       </button>
+      <span class="inline-msg error" *ngIf="error">{{ error }}</span>
+      <span class="inline-msg success" *ngIf="success">{{ success }}</span>
     </div>
   </form>
 </div>

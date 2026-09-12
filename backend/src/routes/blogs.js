@@ -12,6 +12,27 @@ function slugify(text) {
     .replace(/(^-|-$)/g, '');
 }
 
+function normalizeTags(tags) {
+  if (Array.isArray(tags)) {
+    return tags.map((tag) => String(tag).trim()).filter(Boolean);
+  }
+  if (typeof tags === 'string') {
+    return tags
+      .split(',')
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+  }
+  return [];
+}
+
+function normalizeStatus(status, fallback = 'draft') {
+  const value = String(status || '').toLowerCase().trim();
+  if (value === 'published' || value === 'draft') {
+    return value;
+  }
+  return fallback;
+}
+
 router.get('/', (req, res) => {
   const blogs = readCollection('blogs', []);
   res.json(blogs);
@@ -41,8 +62,8 @@ router.post('/', (req, res) => {
     excerpt: req.body.excerpt || '',
     content: req.body.content || '',
     author: req.body.author || 'Admin',
-    status: req.body.status === 'published' ? 'published' : 'draft',
-    tags: Array.isArray(req.body.tags) ? req.body.tags : [],
+    status: normalizeStatus(req.body.status, 'draft'),
+    tags: normalizeTags(req.body.tags),
     coverImage: req.body.coverImage || '',
     createdAt: now,
     updatedAt: now,
@@ -73,8 +94,11 @@ router.put('/:id', (req, res) => {
     excerpt: req.body.excerpt !== undefined ? req.body.excerpt : existing.excerpt,
     content: req.body.content !== undefined ? req.body.content : existing.content,
     author: req.body.author !== undefined ? req.body.author : existing.author,
-    status: req.body.status === 'published' ? 'published' : req.body.status === 'draft' ? 'draft' : existing.status,
-    tags: Array.isArray(req.body.tags) ? req.body.tags : existing.tags,
+    status:
+      req.body.status !== undefined
+        ? normalizeStatus(req.body.status, existing.status)
+        : existing.status,
+    tags: req.body.tags !== undefined ? normalizeTags(req.body.tags) : existing.tags,
     coverImage: req.body.coverImage !== undefined ? req.body.coverImage : existing.coverImage,
     updatedAt: new Date().toISOString(),
   };

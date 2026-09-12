@@ -73,6 +73,8 @@ select {
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem;
 }
 
@@ -97,6 +99,29 @@ select {
   background: transparent;
   border: 1px solid rgba(16, 35, 45, 0.16);
   color: #243943;
+}
+
+label.invalid input,
+label.invalid textarea {
+  border-color: #9b3a3a;
+}
+
+label small {
+  color: #9b3a3a;
+  font-weight: 500;
+}
+
+.inline-msg {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.inline-msg.error {
+  color: #8a2f2f;
+}
+
+.inline-msg.success {
+  color: #1f5f4d;
 }
 
 @media (max-width: 700px) {

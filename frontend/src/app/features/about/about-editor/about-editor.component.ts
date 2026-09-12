@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AboutService } from '../../../core/services/about.service';
 
@@ -8,6 +8,8 @@ import { AboutService } from '../../../core/services/about.service';
   styleUrls: ['./about-editor.component.scss'],
 })
 export class AboutEditorComponent implements OnInit {
+  @ViewChild('feedback') feedback?: ElementRef<HTMLElement>;
+
   loading = true;
   saving = false;
   error = '';
@@ -38,6 +40,10 @@ export class AboutEditorComponent implements OnInit {
   }
 
   submit(): void {
+    if (this.saving) {
+      return;
+    }
+
     this.saving = true;
     this.error = '';
     this.success = '';
@@ -45,10 +51,14 @@ export class AboutEditorComponent implements OnInit {
       next: () => {
         this.saving = false;
         this.success = 'About page saved to about.json.';
+        setTimeout(() => this.feedback?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0);
       },
-      error: () => {
+      error: (err) => {
         this.saving = false;
-        this.error = 'Could not save about content.';
+        this.error =
+          (err && err.error && err.error.error) ||
+          'Could not save about content. Check that the API is running on port 4521.';
+        setTimeout(() => this.feedback?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0);
       },
     });
   }
