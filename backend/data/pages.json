@@ -1,0 +1,24 @@
+[
+  {
+    "id": "page-home",
+    "title": "Home",
+    "slug": "home",
+    "status": "published",
+    "seoTitle": "Home | Site Admin Demo",
+    "seoDescription": "Landing page content managed from the admin panel.",
+    "content": "Welcome. Use the admin panel to manage blogs, about content, pages, and site settings.",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "page-contact",
+    "title": "Contact",
+    "slug": "contact",
+    "status": "published",
+    "seoTitle": "Contact Us",
+    "seoDescription": "Get in touch with our team.",
+    "content": "Email hello@example.com or use the contact form on your public site. Update this page whenever support channels change.",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  }
+]

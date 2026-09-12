@@ -1,0 +1,47 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>Pages</h2>
+      <p>Manage static site pages like Home and Contact.</p>
+    </div>
+    <a class="btn primary" routerLink="/pages/new">New page</a>
+  </div>
+
+  <div class="state" *ngIf="loading">Loading pages…</div>
+  <div class="state error" *ngIf="!loading && error">{{ error }}</div>
+
+  <div class="empty panel" *ngIf="!loading && !error && !pages.length">
+    No pages yet. <a routerLink="/pages/new">Create one</a>.
+  </div>
+
+  <div class="table-wrap panel" *ngIf="!loading && pages.length">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>SEO title</th>
+          <th>Updated</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let page of pages">
+          <td>
+            <strong>{{ page.title }}</strong>
+            <div class="muted">/{{ page.slug }}</div>
+          </td>
+          <td><span class="badge" [class.published]="page.status === 'published'">{{ page.status }}</span></td>
+          <td>{{ page.seoTitle }}</td>
+          <td>{{ page.updatedAt | date: 'mediumDate' }}</td>
+          <td class="actions">
+            <a [routerLink]="['/pages', page.id, 'edit']">Edit</a>
+            <button type="button" class="link-btn danger" (click)="remove(page)" [disabled]="deletingId === page.id">
+              {{ deletingId === page.id ? 'Deleting…' : 'Delete' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

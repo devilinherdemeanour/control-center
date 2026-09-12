@@ -1,0 +1,50 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>Dashboard</h2>
+      <p>Snapshot of content stored in JSON files.</p>
+    </div>
+  </div>
+
+  <div class="state" *ngIf="loading">Loading overview…</div>
+  <div class="state error" *ngIf="!loading && error">{{ error }}</div>
+
+  <ng-container *ngIf="!loading && summary">
+    <section class="stats">
+      <article>
+        <p class="label">Blog posts</p>
+        <p class="value">{{ summary.counts.blogs }}</p>
+        <p class="meta">{{ summary.counts.publishedBlogs }} published · {{ summary.counts.draftBlogs }} draft</p>
+      </article>
+      <article>
+        <p class="label">Pages</p>
+        <p class="value">{{ summary.counts.pages }}</p>
+        <p class="meta">{{ summary.counts.publishedPages }} published</p>
+      </article>
+      <article>
+        <p class="label">Site</p>
+        <p class="value site">{{ summary.siteName }}</p>
+        <p class="meta">Settings updated {{ summary.settingsUpdatedAt ? (summary.settingsUpdatedAt | date: 'medium') : 'never' }}</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Recent blogs</h3>
+        <a routerLink="/blogs">Manage blogs</a>
+      </div>
+
+      <div class="empty" *ngIf="!summary.recentBlogs.length">No blog posts yet. Create your first post.</div>
+
+      <ul class="recent" *ngIf="summary.recentBlogs.length">
+        <li *ngFor="let blog of summary.recentBlogs">
+          <div>
+            <strong>{{ blog.title }}</strong>
+            <p>{{ blog.excerpt || 'No excerpt' }}</p>
+          </div>
+          <span class="badge" [class.published]="blog.status === 'published'">{{ blog.status }}</span>
+        </li>
+      </ul>
+    </section>
+  </ng-container>
+</div>

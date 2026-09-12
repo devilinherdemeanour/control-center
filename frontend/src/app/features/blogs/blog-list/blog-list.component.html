@@ -1,0 +1,47 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>Blogs</h2>
+      <p>Create, edit, publish, and archive posts.</p>
+    </div>
+    <a class="btn primary" routerLink="/blogs/new">New blog</a>
+  </div>
+
+  <div class="state" *ngIf="loading">Loading blogs…</div>
+  <div class="state error" *ngIf="!loading && error">{{ error }}</div>
+
+  <div class="empty panel" *ngIf="!loading && !error && !blogs.length">
+    No blogs yet. <a routerLink="/blogs/new">Write the first post</a>.
+  </div>
+
+  <div class="table-wrap panel" *ngIf="!loading && blogs.length">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Author</th>
+          <th>Updated</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blog of blogs">
+          <td>
+            <strong>{{ blog.title }}</strong>
+            <div class="muted">/{{ blog.slug }}</div>
+          </td>
+          <td><span class="badge" [class.published]="blog.status === 'published'">{{ blog.status }}</span></td>
+          <td>{{ blog.author }}</td>
+          <td>{{ blog.updatedAt | date: 'mediumDate' }}</td>
+          <td class="actions">
+            <a [routerLink]="['/blogs', blog.id, 'edit']">Edit</a>
+            <button type="button" class="link-btn danger" (click)="remove(blog)" [disabled]="deletingId === blog.id">
+              {{ deletingId === blog.id ? 'Deleting…' : 'Delete' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

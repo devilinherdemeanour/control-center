@@ -1,0 +1,43 @@
+<div class="shell" [class.nav-open]="navOpen">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">NL</span>
+      <div>
+        <p class="brand-name">Northline</p>
+        <p class="brand-sub">Admin</p>
+      </div>
+    </div>
+
+    <nav>
+      <a
+        *ngFor="let link of links"
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        (click)="closeNav()"
+      >
+        <span class="label">{{ link.label }}</span>
+        <span class="hint">{{ link.hint }}</span>
+      </a>
+    </nav>
+
+    <p class="storage-note">Data stored in JSON files</p>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button type="button" class="menu-btn" (click)="toggleNav()" aria-label="Toggle navigation">
+        Menu
+      </button>
+      <div>
+        <p class="eyebrow">Content control</p>
+        <h1>Website Admin</h1>
+      </div>
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <div class="backdrop" *ngIf="navOpen" (click)="closeNav()"></div>
+</div>

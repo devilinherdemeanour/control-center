@@ -1,0 +1,28 @@
+[
+  {
+    "id": "blog-1",
+    "title": "Welcome to the Admin Panel",
+    "slug": "welcome-to-the-admin-panel",
+    "excerpt": "A quick overview of how content is managed from this dashboard.",
+    "content": "This admin panel lets you create and edit website content without touching code. Blog posts, about page copy, static pages, and site settings are all stored in JSON files on the server.\n\nUse the sidebar to navigate between content types and start publishing.",
+    "author": "Admin",
+    "status": "published",
+    "tags": ["announcement", "admin"],
+    "coverImage": "",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "blog-2",
+    "title": "How JSON File Storage Works",
+    "slug": "how-json-file-storage-works",
+    "excerpt": "For early development, the API persists records to local JSON files instead of a database.",
+    "content": "Each collection (blogs, pages, settings, about) maps to a JSON file under backend/data. Create, update, and delete operations rewrite the file so changes survive server restarts.\n\nWhen you are ready for production, swap the JSON store for a real database with the same route shapes.",
+    "author": "Admin",
+    "status": "draft",
+    "tags": ["architecture", "backend"],
+    "coverImage": "",
+    "createdAt": "2026-09-05T14:30:00.000Z",
+    "updatedAt": "2026-09-05T14:30:00.000Z"
+  }
+]

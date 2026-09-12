@@ -1,0 +1,52 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>{{ isEdit ? 'Edit page' : 'New page' }}</h2>
+      <p>Static pages are stored in <code>backend/data/pages.json</code>.</p>
+    </div>
+    <a class="btn ghost" routerLink="/pages">Back</a>
+  </div>
+
+  <div class="state" *ngIf="loading">Loading page…</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+
+  <form class="panel form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading">
+    <label>
+      <span>Title</span>
+      <input formControlName="title" />
+    </label>
+
+    <div class="grid two">
+      <label>
+        <span>Slug</span>
+        <input formControlName="slug" placeholder="auto-from-title" />
+      </label>
+      <label>
+        <span>Status</span>
+        <select formControlName="status">
+          <option value="draft">Draft</option>
+          <option value="published">Published</option>
+        </select>
+      </label>
+    </div>
+
+    <label>
+      <span>SEO title</span>
+      <input formControlName="seoTitle" />
+    </label>
+
+    <label>
+      <span>SEO description</span>
+      <textarea formControlName="seoDescription" rows="3"></textarea>
+    </label>
+
+    <label>
+      <span>Content</span>
+      <textarea formControlName="content" rows="12"></textarea>
+    </label>
+
+    <button class="btn primary" type="submit" [disabled]="saving">
+      {{ saving ? 'Saving…' : isEdit ? 'Update page' : 'Create page' }}
+    </button>
+  </form>
+</div>

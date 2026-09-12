@@ -1,0 +1,60 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>Site settings</h2>
+      <p>Brand name, contact, and social links for the public site.</p>
+    </div>
+  </div>
+
+  <div class="state" *ngIf="loading">Loading settings…</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+  <div class="state success" *ngIf="success">{{ success }}</div>
+
+  <form class="panel form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading">
+    <div class="grid two">
+      <label>
+        <span>Site name</span>
+        <input formControlName="siteName" />
+      </label>
+      <label>
+        <span>Contact email</span>
+        <input formControlName="contactEmail" type="email" />
+      </label>
+    </div>
+
+    <label>
+      <span>Tagline</span>
+      <input formControlName="tagline" />
+    </label>
+
+    <div class="grid two">
+      <label>
+        <span>Logo URL</span>
+        <input formControlName="logoUrl" />
+      </label>
+      <label>
+        <span>Primary color</span>
+        <input formControlName="primaryColor" type="color" />
+      </label>
+    </div>
+
+    <div class="grid three">
+      <label>
+        <span>Twitter</span>
+        <input formControlName="twitter" placeholder="https://…" />
+      </label>
+      <label>
+        <span>LinkedIn</span>
+        <input formControlName="linkedin" placeholder="https://…" />
+      </label>
+      <label>
+        <span>GitHub</span>
+        <input formControlName="github" placeholder="https://…" />
+      </label>
+    </div>
+
+    <button class="btn primary" type="submit" [disabled]="saving">
+      {{ saving ? 'Saving…' : 'Save settings' }}
+    </button>
+  </form>
+</div>

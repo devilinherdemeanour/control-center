@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.angular/
+*.log
+.DS_Store
+.idea/
+.vscode/
+frontend/.angular/
+frontend/dist/
+backend/node_modules/
