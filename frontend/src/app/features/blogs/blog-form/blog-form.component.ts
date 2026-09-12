@@ -65,7 +65,16 @@ export class BlogFormComponent implements OnInit {
     return !!this.id;
   }
 
-  submit(): void {
+  setStatus(status: 'draft' | 'published'): void {
+    this.form.patchValue({ status });
+  }
+
+  submit(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     this.submitted = true;
     this.error = '';
     this.success = '';
@@ -107,7 +116,7 @@ export class BlogFormComponent implements OnInit {
         this.success = this.id
           ? `Blog updated (${saved.status}).`
           : `Blog created (${saved.status}).`;
-        setTimeout(() => this.router.navigate(['/blogs']), 400);
+        setTimeout(() => this.router.navigate(['/blogs']), 500);
       },
       error: (err) => {
         this.saving = false;

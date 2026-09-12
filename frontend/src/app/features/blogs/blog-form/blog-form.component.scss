@@ -71,6 +71,41 @@ select {
   gap: 1rem;
 }
 
+.status-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.status-label {
+  font-weight: 600;
+  color: #243943;
+}
+
+.status-toggle {
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.status-btn {
+  min-width: 7.5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(16, 35, 45, 0.16);
+  background: #fff;
+  color: #243943;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.status-btn.active {
+  background: #1f6f7a;
+  border-color: #1f6f7a;
+  color: #f5fafb;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;

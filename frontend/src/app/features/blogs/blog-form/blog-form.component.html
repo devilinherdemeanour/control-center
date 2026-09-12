@@ -11,56 +11,76 @@
   <div class="state error" *ngIf="error">{{ error }}</div>
   <div class="state success" *ngIf="success">{{ success }}</div>
 
-  <form class="panel form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading">
+  <form class="panel form" [formGroup]="form" (ngSubmit)="submit($event)" *ngIf="!loading">
     <label [class.invalid]="submitted && form.controls.title.invalid">
       <span>Title *</span>
-      <input formControlName="title" placeholder="Post title" />
+      <input id="blog-title" formControlName="title" placeholder="Post title" />
       <small *ngIf="submitted && form.controls.title.invalid">Title is required.</small>
     </label>
 
-    <div class="grid two">
-      <label>
-        <span>Slug</span>
-        <input formControlName="slug" placeholder="auto-from-title" />
-      </label>
-      <label>
-        <span>Status</span>
-        <select formControlName="status">
-          <option value="draft">Draft</option>
-          <option value="published">Published</option>
-        </select>
-      </label>
+    <label>
+      <span>Slug</span>
+      <input id="blog-slug" formControlName="slug" placeholder="auto-from-title" />
+    </label>
+
+    <div class="status-field">
+      <span class="status-label">Status</span>
+      <div class="status-toggle" role="group" aria-label="Publication status">
+        <button
+          type="button"
+          class="status-btn"
+          [class.active]="form.value.status === 'draft'"
+          (click)="setStatus('draft')"
+        >
+          Draft
+        </button>
+        <button
+          type="button"
+          id="status-published"
+          class="status-btn"
+          [class.active]="form.value.status === 'published'"
+          (click)="setStatus('published')"
+        >
+          Published
+        </button>
+      </div>
     </div>
 
     <div class="grid two">
       <label>
         <span>Author</span>
-        <input formControlName="author" />
+        <input id="blog-author" formControlName="author" />
       </label>
       <label>
         <span>Tags</span>
-        <input formControlName="tags" placeholder="news, product, launch" />
+        <input id="blog-tags" formControlName="tags" placeholder="news, product, launch" />
       </label>
     </div>
 
     <label>
       <span>Cover image URL</span>
-      <input formControlName="coverImage" placeholder="https://…" />
+      <input id="blog-cover" formControlName="coverImage" placeholder="https://…" />
     </label>
 
     <label>
       <span>Excerpt</span>
-      <textarea formControlName="excerpt" rows="3"></textarea>
+      <textarea id="blog-excerpt" formControlName="excerpt" rows="3"></textarea>
     </label>
 
     <label [class.invalid]="submitted && form.controls.content.invalid">
       <span>Content *</span>
-      <textarea formControlName="content" rows="12"></textarea>
+      <textarea id="blog-content" formControlName="content" rows="12"></textarea>
       <small *ngIf="submitted && form.controls.content.invalid">Content is required.</small>
     </label>
 
     <div class="actions">
-      <button class="btn primary" type="submit" (click)="submit()" [disabled]="saving">
+      <button
+        id="blog-submit"
+        class="btn primary"
+        type="button"
+        (click)="submit($event)"
+        [disabled]="saving"
+      >
         {{ saving ? 'Saving…' : isEdit ? 'Update blog' : 'Create blog' }}
       </button>
       <span class="inline-msg error" *ngIf="error">{{ error }}</span>

@@ -137,6 +137,7 @@ nav a.active {
 
 .backdrop {
   display: none;
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {
@@ -151,6 +152,7 @@ nav a.active {
     width: min(280px, 84vw);
     transform: translateX(-105%);
     transition: transform 0.25s ease;
+    z-index: 20;
   }
 
   .shell.nav-open .sidebar {
@@ -161,11 +163,12 @@ nav a.active {
     display: inline-flex;
   }
 
-  .backdrop {
+  .shell.nav-open .backdrop {
     display: block;
     position: fixed;
     inset: 0;
     background: rgba(12, 20, 16, 0.4);
     z-index: 15;
+    pointer-events: auto;
   }
 }
