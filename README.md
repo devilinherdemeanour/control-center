@@ -54,7 +54,21 @@ Open [http://127.0.0.1:4317](http://127.0.0.1:4317).
 
 Edits in the admin UI rewrite these files immediately, so changes survive API restarts.
 
-## Showcase / production serve
+## Long-lived hosting (Render free)
+
+Agent tunnels only last while this Cloud Agent is running. For days/weeks of uptime, deploy to [Render](https://render.com) (free plan, no credit card):
+
+1. Push this repo to **GitHub** (Render connects to GitHub/GitLab/Bitbucket; Origin alone is not enough).
+2. In Render: **New → Blueprint** (or Web Service), connect the repo.
+3. Render will pick up `render.yaml` + `Dockerfile` and deploy a free web service.
+4. Open the `*.onrender.com` URL Render assigns.
+
+Notes:
+- Free instances **sleep after ~15 minutes** of no traffic (wake takes ~1 minute).
+- JSON file data resets if the instance is rebuilt unless you add a persistent disk later.
+- Local demo command: `docker build -t control-center . && docker run -p 4535:4535 control-center`
+
+## Showcase / production serve (local or temporary tunnel)
 
 Build the Angular app and serve UI + API from one Node process:
 
@@ -66,7 +80,7 @@ PORT=4535 npm run start:api
 
 Then open `http://127.0.0.1:4535`. The API is available under `/api`.
 
-For a temporary public demo URL (while the process is running):
+Temporary public URL (dies when the machine stops):
 
 ```bash
 cloudflared tunnel --url http://127.0.0.1:4535
