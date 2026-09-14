@@ -61,3 +61,67 @@ export interface DashboardSummary {
   settingsUpdatedAt: string | null;
   siteName: string;
 }
+
+export interface NewsItem {
+  id: string;
+  title: string;
+  shortTitle?: string;
+  slug: string;
+  coverImage: string;
+  content: string;
+  status: 'draft' | 'published';
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface FirmService {
+  id: string;
+  title: string;
+  slug: string;
+  summary: string;
+  content: string;
+  coverImage: string;
+  icon?: string;
+  status: 'draft' | 'published';
+  order?: number;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface Lawyer {
+  id: string;
+  firstName: string;
+  lastName: string;
+  direction: string;
+  title: string;
+  photo: string;
+  bio: string;
+  details: string;
+  email: string;
+  phone: string;
+  order?: number;
+  status: 'draft' | 'published';
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface ContactInfo {
+  headline: string;
+  subheadline: string;
+  address: string;
+  phone: string;
+  phoneSecondary: string;
+  email: string;
+  emailSecondary: string;
+  workingHours: string;
+  mapEmbedUrl: string;
+  mapLat: string;
+  mapLng: string;
+  whatsapp: string;
+  telegram: string;
+  facebook: string;
+  instagram: string;
+  linkedin: string;
+  extraNote: string;
+  updatedAt?: string | null;
+}

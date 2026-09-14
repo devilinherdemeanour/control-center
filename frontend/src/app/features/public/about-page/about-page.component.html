@@ -1,0 +1,28 @@
+<section class="page">
+  <p *ngIf="loading" class="status">Yüklənir...</p>
+
+  <ng-container *ngIf="!loading && about">
+    <header class="page-header">
+      <p class="eyebrow">Haqqımızda</p>
+      <h1>{{ about.headline }}</h1>
+      <p class="lead">{{ about.subheadline }}</p>
+    </header>
+
+    <div class="content" [innerHTML]="formattedBody"></div>
+
+    <div class="values">
+      <article *ngIf="about.mission">
+        <h2>Missiya</h2>
+        <p>{{ about.mission }}</p>
+      </article>
+      <article *ngIf="about.vision">
+        <h2>Vizyon</h2>
+        <p>{{ about.vision }}</p>
+      </article>
+    </div>
+
+    <p *ngIf="about.teamIntro" class="team-intro">{{ about.teamIntro }}</p>
+
+    <a routerLink="/komanda" class="btn">Komandamızla tanış olun →</a>
+  </ng-container>
+</section>

@@ -1,0 +1,141 @@
+<section class="home-page">
+  <div class="home-grid">
+    <!-- Hero left -->
+    <div class="hero">
+      <p class="eyebrow">PEŞƏKARLIQ • ETİBAR • NƏTİCƏ</p>
+      <h1 class="hero-title">
+        Hüquq sizin
+        <span class="pill-highlight">
+          hədəfləriniz
+          <span class="pill-arrow" aria-hidden="true">→</span>
+        </span>
+        üçün var.
+      </h1>
+      <p class="hero-sub">
+        Fərdlər və bizneslər üçün etibarlı hüquqi dəstək. Daha aydın proses. Daha güclü nəticə.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/elaqe" class="btn btn-primary">
+          Konsultasiya al
+          <span aria-hidden="true">→</span>
+        </a>
+        <a routerLink="/elaqe" class="btn btn-ghost">
+          <span class="cal-icon" aria-hidden="true">📅</span>
+          Görüş təyin et
+        </a>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <strong>15+</strong>
+          <span>il təcrübə</span>
+        </div>
+        <div class="stat">
+          <strong>500+</strong>
+          <span>uğurla tamamlanmış iş</span>
+        </div>
+        <div class="stat">
+          <strong>98%</strong>
+          <span>müştəri məmnuniyyəti</span>
+        </div>
+      </div>
+      <button type="button" class="scroll-hint" (click)="scrollDown()">
+        <span class="mouse" aria-hidden="true"></span>
+        Aşağı sürüşdürün
+      </button>
+    </div>
+
+    <!-- Right grid -->
+    <div class="cards-area">
+      <div class="image-cards">
+        <a
+          *ngFor="let card of heroCards"
+          [routerLink]="card.link"
+          class="image-card"
+          [class.wide]="card.wide"
+        >
+          <img [src]="card.image" [alt]="card.title" loading="lazy" />
+          <div class="image-card-overlay">
+            <div>
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.subtitle }}</p>
+            </div>
+            <span class="circle-arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="side-stack">
+        <a
+          *ngFor="let step of serviceSteps; let i = index"
+          [routerLink]="services[i] ? ['/xidmetler', services[i].id] : '/xidmetler'"
+          class="step-card"
+        >
+          <span class="step-icon">{{ step.icon }}</span>
+          <span class="step-title">{{ services[i]?.title || step.title }}</span>
+          <span class="step-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="bottom-row">
+      <div class="cta-card">
+        <div class="cta-text">
+          <h3>Hüquqi məsələlərə ehtiyacınız var?</h3>
+          <p>İlk addımı bu gün atın.</p>
+          <a routerLink="/elaqe" class="btn btn-primary btn-sm">Əlaqə saxla</a>
+        </div>
+        <div class="cta-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            alt="Ofis"
+            loading="lazy"
+          />
+          <p class="vertical-text">Daha güclü gələcək üçün doğru tərəfdaş.</p>
+        </div>
+      </div>
+
+      <a routerLink="/haqqimizda" class="video-card">
+        <img
+          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+          alt="Firmamız haqqında"
+          loading="lazy"
+        />
+        <div class="video-overlay">
+          <span class="play-btn" aria-hidden="true">▶</span>
+          <span>Firmamız haqqında 1:24 video</span>
+        </div>
+      </a>
+
+      <div class="quote-card">
+        <blockquote>
+          Doğru hüquqi dəstək, daha böyük imkanlar yaradır.
+        </blockquote>
+        <p class="quote-author">ASLAN ISMAYILOV</p>
+        <div class="quote-footer">
+          <div class="avatars">
+            <img
+              *ngFor="let lawyer of lawyers"
+              [src]="lawyer.photo"
+              [alt]="lawyer.firstName"
+              loading="lazy"
+            />
+          </div>
+          <span>500+ müştəri bizə etibar edir.</span>
+          <a routerLink="/komanda" class="circle-arrow dark" aria-label="Komanda">→</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA strip -->
+  <div class="bottom-strip">
+    <div class="strip-inner">
+      <div>
+        <p class="strip-eyebrow">Peşəkar hüquqi dəstək</p>
+        <h2>Hüquqi prosesinizi bizimlə sadələşdirin</h2>
+      </div>
+      <a routerLink="/elaqe" class="btn btn-primary">Konsultasiya al →</a>
+    </div>
+  </div>
+</section>

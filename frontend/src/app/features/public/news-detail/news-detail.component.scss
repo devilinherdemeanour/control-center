@@ -1,0 +1,46 @@
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--muted, #6b6b6b);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.hero {
+  width: 100%;
+  max-height: 22rem;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.page-header time {
+  font-size: 0.82rem;
+  color: var(--muted, #6b6b6b);
+}
+
+.page-header h1 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.content {
+  margin-top: 2rem;
+  line-height: 1.75;
+
+  ::ng-deep p {
+    margin: 0 0 1rem;
+  }
+}
+
+.status {
+  color: var(--muted, #6b6b6b);
+}

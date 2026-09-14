@@ -1,0 +1,21 @@
+<section class="page">
+  <header class="page-header">
+    <p class="eyebrow">Bloq</p>
+    <h1>Xəbərlər və məqalələr</h1>
+    <p class="lead">Hüquqi sahədə yeniliklər, məsləhətlər və firmamızdan xəbərlər.</p>
+  </header>
+
+  <p *ngIf="loading" class="status">Yüklənir...</p>
+
+  <div class="grid" *ngIf="!loading">
+    <a *ngFor="let item of news" [routerLink]="['/bloq', item.id]" class="card">
+      <img *ngIf="item.coverImage" [src]="item.coverImage" [alt]="item.title" loading="lazy" />
+      <div class="card-body">
+        <time *ngIf="item.createdAt">{{ item.createdAt | date: 'd MMM y' }}</time>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.shortTitle || item.content.slice(0, 120) }}...</p>
+        <span class="link">Oxu →</span>
+      </div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+<div class="public-site" [class.nav-open]="navOpen">
+  <header class="site-header">
+    <div class="header-inner">
+      <a routerLink="/" class="brand" (click)="closeNav()">
+        <span class="brand-emblem" aria-hidden="true">A</span>
+        <span class="brand-text">ASLAN ISMAYILOV AND PARTNERS</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Əsas naviqasiya">
+        <a
+          *ngFor="let link of navLinks"
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          (click)="closeNav()"
+        >
+          {{ link.label }}
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-field">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input type="search" placeholder="Hüquqi sualınız var?" aria-label="Axtarış" />
+        </label>
+
+        <button type="button" class="lang-btn" aria-label="Dil">AZ</button>
+
+        <a routerLink="/elaqe" class="btn btn-primary btn-sm">Konsultasiya al</a>
+
+        <button type="button" class="menu-toggle" (click)="toggleNav()" aria-label="Menyu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" *ngIf="navOpen" aria-label="Mobil naviqasiya">
+      <a
+        *ngFor="let link of navLinks"
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        (click)="closeNav()"
+      >
+        {{ link.label }}
+      </a>
+      <a routerLink="/elaqe" class="btn btn-primary" (click)="closeNav()">Konsultasiya al</a>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-name">ASLAN ISMAYILOV AND PARTNERS</p>
+        <p class="footer-tagline">Peşəkarlıq • Etibar • Nəticə</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer naviqasiya">
+        <a *ngFor="let link of navLinks" [routerLink]="link.path">{{ link.label }}</a>
+      </nav>
+      <p class="footer-copy">&copy; {{ currentYear }} Aslan İsmayilov and Partners. Bütün hüquqlar qorunur.</p>
+    </div>
+  </footer>
+</div>

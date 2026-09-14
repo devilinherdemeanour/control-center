@@ -1,0 +1,24 @@
+<section class="page">
+  <header class="page-header">
+    <p class="eyebrow">Xidmətlər</p>
+    <h1>Hüquqi xidmətlərimiz</h1>
+    <p class="lead">Fərdlər və bizneslər üçün geniş spektrli peşəkar hüquqi dəstək.</p>
+  </header>
+
+  <p *ngIf="loading" class="status">Yüklənir...</p>
+
+  <div class="grid" *ngIf="!loading">
+    <a *ngFor="let service of services" [routerLink]="['/xidmetler', service.id]" class="card">
+      <div class="card-image" *ngIf="service.coverImage">
+        <img [src]="service.coverImage" [alt]="service.title" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <h2>{{ service.title }}</h2>
+        <p>{{ service.summary }}</p>
+        <span class="link">Ətraflı →</span>
+      </div>
+    </a>
+  </div>
+
+  <p *ngIf="!loading && !services.length" class="status">Hazırda xidmət siyahısı boşdur.</p>
+</section>

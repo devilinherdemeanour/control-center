@@ -1,0 +1,72 @@
+<section class="page">
+  <header class="page-header">
+    <p class="eyebrow">Əlaqə</p>
+    <h1>{{ contact?.headline || 'Bizimlə əlaqə saxlayın' }}</h1>
+    <p class="lead">{{ contact?.subheadline || 'Hüquqi məsələnizi bu gün müzakirə edək.' }}</p>
+  </header>
+
+  <p *ngIf="loading" class="status">Yüklənir...</p>
+
+  <div class="layout" *ngIf="!loading && contact">
+    <div class="info-panel">
+      <div class="info-block">
+        <h3>Telefon</h3>
+        <a [href]="'tel:' + contact.phone">{{ contact.phone }}</a>
+        <a *ngIf="contact.phoneSecondary" [href]="'tel:' + contact.phoneSecondary">
+          {{ contact.phoneSecondary }}
+        </a>
+      </div>
+
+      <div class="info-block">
+        <h3>E-poçt</h3>
+        <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+        <a *ngIf="contact.emailSecondary" [href]="'mailto:' + contact.emailSecondary">
+          {{ contact.emailSecondary }}
+        </a>
+      </div>
+
+      <div class="info-block">
+        <h3>Ünvan</h3>
+        <p>{{ contact.address }}</p>
+      </div>
+
+      <div class="info-block">
+        <h3>İş saatları</h3>
+        <p>{{ contact.workingHours }}</p>
+      </div>
+
+      <p *ngIf="contact.extraNote" class="note">{{ contact.extraNote }}</p>
+    </div>
+
+    <div class="form-panel">
+      <div *ngIf="submitted" class="success">
+        Mesajınız qəbul edildi. Tezliklə sizinlə əlaqə saxlayacağıq.
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="!submitted">
+        <label>
+          Ad, soyad
+          <input type="text" formControlName="name" placeholder="Adınız" />
+        </label>
+        <label>
+          Telefon
+          <input type="tel" formControlName="phone" placeholder="+994 XX XXX XX XX" />
+        </label>
+        <label>
+          Mesaj
+          <textarea formControlName="message" rows="5" placeholder="Hüquqi sualınızı yazın"></textarea>
+        </label>
+        <button type="submit" class="btn">Göndər</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="map-wrap" *ngIf="contact?.mapEmbedUrl">
+    <iframe
+      [src]="contact!.mapEmbedUrl | safeUrl"
+      title="Xəritə"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</section>

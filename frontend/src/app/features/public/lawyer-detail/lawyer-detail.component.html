@@ -1,0 +1,22 @@
+<section class="page" *ngIf="!loading && lawyer">
+  <a routerLink="/komanda" class="back">← Komanda</a>
+
+  <div class="profile">
+    <img [src]="lawyer.photo" [alt]="lawyer.firstName" />
+    <div>
+      <p class="eyebrow">{{ lawyer.direction }}</p>
+      <h1>{{ lawyer.firstName }} {{ lawyer.lastName }}</h1>
+      <p class="role">{{ lawyer.title }}</p>
+      <p class="bio">{{ lawyer.bio }}</p>
+      <div class="contacts">
+        <a *ngIf="lawyer.email" [href]="'mailto:' + lawyer.email">{{ lawyer.email }}</a>
+        <a *ngIf="lawyer.phone" [href]="'tel:' + lawyer.phone">{{ lawyer.phone }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="details" [innerHTML]="formattedDetails"></div>
+</section>
+
+<p *ngIf="loading" class="page status">Yüklənir...</p>
+<p *ngIf="!loading && notFound" class="page status">Vəkil tapılmadı.</p>

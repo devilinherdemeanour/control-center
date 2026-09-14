@@ -1,0 +1,21 @@
+<section class="page" *ngIf="!loading">
+  <a routerLink="/xidmetler" class="back">← Xidmətlər</a>
+
+  <ng-container *ngIf="service; else notFoundTpl">
+    <div class="hero" *ngIf="service.coverImage">
+      <img [src]="service.coverImage" [alt]="service.title" />
+    </div>
+    <header class="page-header">
+      <h1>{{ service.title }}</h1>
+      <p class="lead">{{ service.summary }}</p>
+    </header>
+    <div class="content" [innerHTML]="formattedContent"></div>
+    <a routerLink="/elaqe" class="btn">Konsultasiya al →</a>
+  </ng-container>
+
+  <ng-template #notFoundTpl>
+    <p class="status" *ngIf="notFound">Xidmət tapılmadı.</p>
+  </ng-template>
+</section>
+
+<p *ngIf="loading" class="page status">Yüklənir...</p>

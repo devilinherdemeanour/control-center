@@ -1,0 +1,15 @@
+<section class="page" *ngIf="!loading && item">
+  <a routerLink="/bloq" class="back">← Bloq</a>
+
+  <img *ngIf="item.coverImage" class="hero" [src]="item.coverImage" [alt]="item.title" />
+
+  <header class="page-header">
+    <time *ngIf="item.createdAt">{{ item.createdAt | date: 'd MMMM y' }}</time>
+    <h1>{{ item.title }}</h1>
+  </header>
+
+  <div class="content" [innerHTML]="formattedContent"></div>
+</section>
+
+<p *ngIf="loading" class="page status">Yüklənir...</p>
+<p *ngIf="!loading && notFound" class="page status">Xəbər tapılmadı.</p>

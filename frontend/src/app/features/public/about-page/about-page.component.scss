@@ -1,0 +1,81 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--muted, #6b6b6b);
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.lead {
+  margin: 0.75rem 0 0;
+  color: var(--muted, #6b6b6b);
+  line-height: 1.6;
+}
+
+.content {
+  line-height: 1.75;
+
+  ::ng-deep p {
+    margin: 0 0 1rem;
+  }
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  article {
+    background: var(--card, #fff);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted, #6b6b6b);
+    line-height: 1.6;
+  }
+}
+
+.team-intro {
+  margin: 2rem 0 0;
+  line-height: 1.65;
+}
+
+.btn {
+  display: inline-flex;
+  margin-top: 2rem;
+  background: var(--ink, #111);
+  color: #fff;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.status {
+  color: var(--muted, #6b6b6b);
+}

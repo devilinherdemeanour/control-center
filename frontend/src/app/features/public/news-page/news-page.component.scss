@@ -1,0 +1,89 @@
+.page {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.page-header {
+  max-width: 40rem;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--muted, #6b6b6b);
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.lead {
+  margin: 0.75rem 0 0;
+  color: var(--muted, #6b6b6b);
+  line-height: 1.6;
+}
+
+.status {
+  color: var(--muted, #6b6b6b);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--card, #fff);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  img {
+    width: 100%;
+    height: 11rem;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.card-body {
+  padding: 1.25rem;
+
+  time {
+    font-size: 0.78rem;
+    color: var(--muted, #6b6b6b);
+  }
+
+  h2 {
+    margin: 0.5rem 0 0;
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  p {
+    margin: 0.5rem 0 0;
+    color: var(--muted, #6b6b6b);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+}
+
+.link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}

@@ -1,0 +1,82 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--muted, #6b6b6b);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  gap: 2rem;
+  align-items: start;
+
+  img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--muted, #6b6b6b);
+  text-transform: uppercase;
+}
+
+.profile h1 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.role {
+  margin: 0.35rem 0 0;
+  font-weight: 600;
+}
+
+.bio {
+  margin: 0.75rem 0 0;
+  color: var(--muted, #6b6b6b);
+  line-height: 1.6;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 1rem;
+
+  a {
+    color: var(--ink, #111);
+    font-size: 0.9rem;
+  }
+}
+
+.details {
+  margin-top: 2rem;
+  line-height: 1.75;
+
+  ::ng-deep p {
+    margin: 0 0 1rem;
+  }
+}
+
+.status {
+  color: var(--muted, #6b6b6b);
+}
+
+@media (max-width: 640px) {
+  .profile {
+    grid-template-columns: 1fr;
+  }
+}
