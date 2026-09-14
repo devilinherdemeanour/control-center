@@ -1,0 +1,113 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>Əlaqə</h2>
+      <p>Əlaqə səhifəsinin məlumatlarını redaktə edin.</p>
+    </div>
+    <div class="head-actions">
+      <button class="btn primary" type="button" (click)="submit()" [disabled]="saving || loading">
+        {{ saving ? 'Saxlanılır…' : 'Saxla' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="state" *ngIf="loading">Yüklənir…</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+
+  <form class="panel form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading">
+    <label>
+      <span>Başlıq</span>
+      <input formControlName="headline" />
+    </label>
+    <label>
+      <span>Alt başlıq</span>
+      <input formControlName="subheadline" />
+    </label>
+    <label>
+      <span>Ünvan</span>
+      <textarea formControlName="address" rows="2"></textarea>
+    </label>
+
+    <div class="grid two">
+      <label>
+        <span>Telefon</span>
+        <input formControlName="phone" />
+      </label>
+      <label>
+        <span>Əlavə telefon</span>
+        <input formControlName="phoneSecondary" />
+      </label>
+    </div>
+
+    <div class="grid two">
+      <label>
+        <span>E-poçt</span>
+        <input type="email" formControlName="email" />
+      </label>
+      <label>
+        <span>Əlavə e-poçt</span>
+        <input type="email" formControlName="emailSecondary" />
+      </label>
+    </div>
+
+    <label>
+      <span>İş saatları</span>
+      <input formControlName="workingHours" />
+    </label>
+
+    <label>
+      <span>Xəritə embed URL</span>
+      <input formControlName="mapEmbedUrl" placeholder="https://…" />
+    </label>
+
+    <div class="grid two">
+      <label>
+        <span>Xəritə enlik (lat)</span>
+        <input formControlName="mapLat" />
+      </label>
+      <label>
+        <span>Xəritə uzunluq (lng)</span>
+        <input formControlName="mapLng" />
+      </label>
+    </div>
+
+    <div class="grid two">
+      <label>
+        <span>WhatsApp</span>
+        <input formControlName="whatsapp" />
+      </label>
+      <label>
+        <span>Telegram</span>
+        <input formControlName="telegram" />
+      </label>
+    </div>
+
+    <div class="grid three">
+      <label>
+        <span>Facebook</span>
+        <input formControlName="facebook" />
+      </label>
+      <label>
+        <span>Instagram</span>
+        <input formControlName="instagram" />
+      </label>
+      <label>
+        <span>LinkedIn</span>
+        <input formControlName="linkedin" />
+      </label>
+    </div>
+
+    <label>
+      <span>Əlavə qeyd</span>
+      <textarea formControlName="extraNote" rows="3"></textarea>
+    </label>
+
+    <div class="actions">
+      <button class="btn primary" type="button" (click)="submit()" [disabled]="saving">
+        {{ saving ? 'Saxlanılır…' : 'Saxla' }}
+      </button>
+      <span class="inline-msg success" *ngIf="success">{{ success }}</span>
+      <span class="inline-msg error" *ngIf="error">{{ error }}</span>
+    </div>
+  </form>
+</div>

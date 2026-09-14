@@ -1,0 +1,50 @@
+[
+  {
+    "id": "law-1",
+    "firstName": "Aslan",
+    "lastName": "İsmayılov",
+    "direction": "Korporativ hüquq",
+    "title": "Təsisçi tərəfdaş",
+    "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80",
+    "bio": "15+ illik təcrübə ilə korporativ və kommersiya hüququ sahəsində müştərilərə strateji dəstək göstərir.",
+    "details": "Aslan İsmayılov firmamızın təsisçisidir. Korporativ strukturlaşdırma, M&A və yüksək riskli mübahisələrdə geniş təcrübəyə malikdir.\n\nOnun yanaşması peşəkarlıq, etibar və ölçülə bilən nəticə üzərində qurulub.",
+    "email": "aslan@aslanismayilov.az",
+    "phone": "+994 12 000 00 00",
+    "order": 1,
+    "status": "published",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "law-2",
+    "firstName": "Leyla",
+    "lastName": "Həsənova",
+    "direction": "Müqavilə hüququ",
+    "title": "Baş hüquqşünas",
+    "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+    "bio": "Müqavilə ekspertizası və danışıqlar üzrə ixtisaslaşmışdır.",
+    "details": "Leyla kommersiya müqavilələrinin hazırlanması və risklərin azaldılması üzrə işləyir. Beynəlxalq əməkdaşlıq layihələrində də təcrübəsi var.",
+    "email": "leyla@aslanismayilov.az",
+    "phone": "+994 12 000 00 01",
+    "order": 2,
+    "status": "published",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "law-3",
+    "firstName": "Elvin",
+    "lastName": "Quliyev",
+    "direction": "Məhkəmə mübahisələri",
+    "title": "Hüquqşünas",
+    "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+    "bio": "Mülki və kommersiya mübahisələrində təmsilçilik.",
+    "details": "Elvin məhkəmə proseslərinin idarə edilməsi və sübut bazasının qurulması üzrə fəaliyyət göstərir.",
+    "email": "elvin@aslanismayilov.az",
+    "phone": "+994 12 000 00 02",
+    "order": 3,
+    "status": "published",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  }
+]

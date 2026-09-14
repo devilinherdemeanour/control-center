@@ -55,11 +55,27 @@ export interface DashboardSummary {
     draftBlogs: number;
     pages: number;
     publishedPages: number;
+    news?: number;
+    services?: number;
+    lawyers?: number;
+    users?: number;
   };
   recentBlogs: Blog[];
+  recentNews?: NewsItem[];
   aboutUpdatedAt: string | null;
   settingsUpdatedAt: string | null;
+  contactUpdatedAt?: string | null;
   siteName: string;
+}
+
+export interface AdminUser {
+  id?: string;
+  username: string;
+  fullName?: string;
+  role: 'admin';
+  password?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface NewsItem {

@@ -1,0 +1,78 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>{{ isEdit ? 'Xəbəri redaktə et' : 'Yeni xəbər' }}</h2>
+      <p>Xəbər məlumatlarını daxil edin.</p>
+    </div>
+    <div class="head-actions">
+      <a class="btn ghost" routerLink="/admin/xeberler">Geri</a>
+      <button class="btn primary" type="button" (click)="submit($event)" [disabled]="saving">
+        {{ saving ? 'Saxlanılır…' : isEdit ? 'Yenilə' : 'Yarat' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="state" *ngIf="loading">Yüklənir…</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+  <div class="state success" *ngIf="success">{{ success }}</div>
+
+  <form class="panel form" [formGroup]="form" (ngSubmit)="submit($event)" *ngIf="!loading">
+    <div class="status-field">
+      <span class="status-label">Status</span>
+      <div class="status-toggle" role="group" aria-label="Dərc statusu">
+        <button
+          type="button"
+          class="status-btn"
+          [class.active]="form.value.status === 'draft'"
+          (click)="setStatus('draft')"
+        >
+          Qaralama
+        </button>
+        <button
+          type="button"
+          class="status-btn"
+          [class.active]="form.value.status === 'published'"
+          (click)="setStatus('published')"
+        >
+          Dərc edilib
+        </button>
+      </div>
+    </div>
+
+    <label [class.invalid]="submitted && form.controls.title.invalid">
+      <span>Xəbərin adı *</span>
+      <input formControlName="title" placeholder="Xəbər başlığı" />
+      <small *ngIf="submitted && form.controls.title.invalid">Ad tələb olunur.</small>
+    </label>
+
+    <div class="grid two">
+      <label>
+        <span>Qısa ad</span>
+        <input formControlName="shortTitle" />
+      </label>
+      <label>
+        <span>Slug</span>
+        <input formControlName="slug" placeholder="avtomatik" />
+      </label>
+    </div>
+
+    <label>
+      <span>Cover şəkil URL</span>
+      <input formControlName="coverImage" placeholder="https://…" />
+    </label>
+
+    <label [class.invalid]="submitted && form.controls.content.invalid">
+      <span>Etraflı məlumat *</span>
+      <textarea formControlName="content" rows="14"></textarea>
+      <small *ngIf="submitted && form.controls.content.invalid">Məzmun tələb olunur.</small>
+    </label>
+
+    <div class="actions">
+      <button class="btn primary" type="button" (click)="submit($event)" [disabled]="saving">
+        {{ saving ? 'Saxlanılır…' : isEdit ? 'Yenilə' : 'Yarat' }}
+      </button>
+      <span class="inline-msg error" *ngIf="error">{{ error }}</span>
+      <span class="inline-msg success" *ngIf="success">{{ success }}</span>
+    </div>
+  </form>
+</div>

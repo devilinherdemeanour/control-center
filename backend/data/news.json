@@ -1,0 +1,24 @@
+[
+  {
+    "id": "news-1",
+    "title": "Korporativ hüquqda yeni tənzimləmələr",
+    "shortTitle": "Korporativ yeniliklər",
+    "slug": "korporativ-huquqda-yeni-tenzimlemeler",
+    "coverImage": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
+    "content": "Biznes mühitində hüquqi tənzimləmələr dəyişdikcə şirkətlərin uyğunlaşma ehtiyacı artır.\n\nKomandamız müştərilərə yeni qaydalara uyğun daxili prosedurların hazırlanmasında dəstək göstərir.",
+    "status": "published",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "news-2",
+    "title": "Müştəri məmnuniyyəti və şəffaf proses",
+    "shortTitle": "Şəffaf proses",
+    "slug": "musteri-memnuniyyeti-ve-seffaf-proses",
+    "coverImage": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
+    "content": "Hüquqi dəstəyin uğuru yalnız nəticə ilə deyil, prosesin aydınlığı ilə ölçülür.\n\nAslan İsmayılov and Partners olaraq hər mərhələdə şəffaf kommunikasiya prinsipini qoruyuruq.",
+    "status": "published",
+    "createdAt": "2026-09-05T10:00:00.000Z",
+    "updatedAt": "2026-09-05T10:00:00.000Z"
+  }
+]

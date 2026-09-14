@@ -1,0 +1,41 @@
+[
+  {
+    "id": "svc-1",
+    "title": "Korporativ hüquq",
+    "slug": "korporativ-huquq",
+    "summary": "Biznesinizin hüquqi tərəfdaşı.",
+    "content": "Şirkətlərin qeydiyyatı, korporativ idarəetmə, səhmdar müqavilələri və gündəlik biznes əməliyyatları üzrə tam hüquqi dəstək.\n\nKomandamız risklərin azaldılması və dayanıqlı inkişaf üçün praktiki həllər təqdim edir.",
+    "coverImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    "icon": "building",
+    "status": "published",
+    "order": 1,
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "svc-2",
+    "title": "Müqavilə hüququ",
+    "slug": "muqavile-huququ",
+    "summary": "Şəffaf, təhlükəsiz, peşəkar.",
+    "content": "Müqavilələrin hazırlanması, ekspertizası və danışıqların aparılması.\n\nMaraqlarınızın qorunması üçün hər bənd diqqətlə işlənir.",
+    "coverImage": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
+    "icon": "contract",
+    "status": "published",
+    "order": 2,
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "svc-3",
+    "title": "Məhkəmə mübahisələri",
+    "slug": "mehkeme-mubahiseleri",
+    "summary": "Nəticəyə fokuslanmış müdafiə.",
+    "content": "Mülki və kommersiya mübahisələrində təmsilçilik, strategiya və proses idarəetməsi.",
+    "coverImage": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+    "icon": "court",
+    "status": "published",
+    "order": 3,
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  }
+]

@@ -1,0 +1,29 @@
+<div class="login-page">
+  <div class="login-card panel">
+    <div class="login-head">
+      <span class="brand-mark">NL</span>
+      <h1>Admin girişi</h1>
+      <p>Panelə daxil olmaq üçün məlumatlarınızı daxil edin.</p>
+    </div>
+
+    <div class="state error" *ngIf="error">{{ error }}</div>
+
+    <form class="form" [formGroup]="form" (ngSubmit)="submit($event)">
+      <label [class.invalid]="submitted && form.controls.username.invalid">
+        <span>İstifadəçi adı</span>
+        <input formControlName="username" autocomplete="username" />
+        <small *ngIf="submitted && form.controls.username.invalid">İstifadəçi adı tələb olunur.</small>
+      </label>
+
+      <label [class.invalid]="submitted && form.controls.password.invalid">
+        <span>Şifrə</span>
+        <input type="password" formControlName="password" autocomplete="current-password" />
+        <small *ngIf="submitted && form.controls.password.invalid">Şifrə tələb olunur.</small>
+      </label>
+
+      <button class="btn primary" type="submit" [disabled]="saving">
+        {{ saving ? 'Giriş edilir…' : 'Daxil ol' }}
+      </button>
+    </form>
+  </div>
+</div>

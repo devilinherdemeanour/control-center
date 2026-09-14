@@ -1,0 +1,105 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>{{ isEdit ? 'Vəkili redaktə et' : 'Yeni vəkil' }}</h2>
+      <p>Vəkil məlumatlarını daxil edin.</p>
+    </div>
+    <div class="head-actions">
+      <a class="btn ghost" routerLink="/admin/vekiller">Geri</a>
+      <button class="btn primary" type="button" (click)="submit($event)" [disabled]="saving">
+        {{ saving ? 'Saxlanılır…' : isEdit ? 'Yenilə' : 'Yarat' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="state" *ngIf="loading">Yüklənir…</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+  <div class="state success" *ngIf="success">{{ success }}</div>
+
+  <form class="panel form" [formGroup]="form" (ngSubmit)="submit($event)" *ngIf="!loading">
+    <div class="status-field">
+      <span class="status-label">Status</span>
+      <div class="status-toggle" role="group" aria-label="Dərc statusu">
+        <button
+          type="button"
+          class="status-btn"
+          [class.active]="form.value.status === 'draft'"
+          (click)="setStatus('draft')"
+        >
+          Qaralama
+        </button>
+        <button
+          type="button"
+          class="status-btn"
+          [class.active]="form.value.status === 'published'"
+          (click)="setStatus('published')"
+        >
+          Dərc edilib
+        </button>
+      </div>
+    </div>
+
+    <div class="grid two">
+      <label [class.invalid]="submitted && form.controls.firstName.invalid">
+        <span>Ad *</span>
+        <input formControlName="firstName" />
+        <small *ngIf="submitted && form.controls.firstName.invalid">Ad tələb olunur.</small>
+      </label>
+      <label [class.invalid]="submitted && form.controls.lastName.invalid">
+        <span>Soyad *</span>
+        <input formControlName="lastName" />
+        <small *ngIf="submitted && form.controls.lastName.invalid">Soyad tələb olunur.</small>
+      </label>
+    </div>
+
+    <div class="grid two">
+      <label>
+        <span>İstiqamət</span>
+        <input formControlName="direction" />
+      </label>
+      <label>
+        <span>Vəzifə</span>
+        <input formControlName="title" />
+      </label>
+    </div>
+
+    <label>
+      <span>Şəkil URL</span>
+      <input formControlName="photo" placeholder="https://…" />
+    </label>
+
+    <label>
+      <span>Qısa bio</span>
+      <textarea formControlName="bio" rows="3"></textarea>
+    </label>
+
+    <label>
+      <span>Etraflı məlumat</span>
+      <textarea formControlName="details" rows="14"></textarea>
+    </label>
+
+    <div class="grid two">
+      <label>
+        <span>E-poçt</span>
+        <input type="email" formControlName="email" />
+      </label>
+      <label>
+        <span>Telefon</span>
+        <input formControlName="phone" />
+      </label>
+    </div>
+
+    <label>
+      <span>Sıra</span>
+      <input type="number" formControlName="order" />
+    </label>
+
+    <div class="actions">
+      <button class="btn primary" type="button" (click)="submit($event)" [disabled]="saving">
+        {{ saving ? 'Saxlanılır…' : isEdit ? 'Yenilə' : 'Yarat' }}
+      </button>
+      <span class="inline-msg error" *ngIf="error">{{ error }}</span>
+      <span class="inline-msg success" *ngIf="success">{{ success }}</span>
+    </div>
+  </form>
+</div>

@@ -7,6 +7,11 @@ const aboutRouter = require('./routes/about');
 const pagesRouter = require('./routes/pages');
 const settingsRouter = require('./routes/settings');
 const dashboardRouter = require('./routes/dashboard');
+const newsRouter = require('./routes/news');
+const servicesRouter = require('./routes/services');
+const lawyersRouter = require('./routes/lawyers');
+const contactRouter = require('./routes/contact');
+const usersRouter = require('./routes/users');
 
 const app = express();
 const PORT = process.env.PORT || 4521;
@@ -24,6 +29,11 @@ app.use('/api/blogs', blogsRouter);
 app.use('/api/about', aboutRouter);
 app.use('/api/pages', pagesRouter);
 app.use('/api/settings', settingsRouter);
+app.use('/api/news', newsRouter);
+app.use('/api/services', servicesRouter);
+app.use('/api/lawyers', lawyersRouter);
+app.use('/api/contact', contactRouter);
+app.use('/api/users', usersRouter);
 
 app.use(express.static(distPath));
 

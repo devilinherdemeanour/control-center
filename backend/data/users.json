@@ -1,0 +1,11 @@
+[
+  {
+    "id": "user-admin-1",
+    "username": "admin",
+    "passwordHash": "$2b$10$clAgoh63HfO./4HlammkJOu.3Ltodt.IONJderEqtgBsHl3oEhsVC",
+    "fullName": "Sistem Administratoru",
+    "role": "admin",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-01T10:00:00.000Z"
+  }
+]

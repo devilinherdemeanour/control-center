@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>İstifadəçilər</h2>
+      <p>Admin panel istifadəçilərini idarə edin.</p>
+    </div>
+    <a class="btn primary" routerLink="/admin/istifadeciler/new">Yeni istifadəçi</a>
+  </div>
+
+  <div class="state" *ngIf="loading">Yüklənir…</div>
+  <div class="state error" *ngIf="!loading && error">{{ error }}</div>
+
+  <div class="empty panel" *ngIf="!loading && !error && !users.length">
+    Hələ istifadəçi yoxdur. <a routerLink="/admin/istifadeciler/new">İlk istifadəçini əlavə edin</a>.
+  </div>
+
+  <div class="table-wrap panel" *ngIf="!loading && users.length">
+    <table>
+      <thead>
+        <tr>
+          <th>İstifadəçi adı</th>
+          <th>Ad Soyad</th>
+          <th>Rol</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td><strong>{{ user.username }}</strong></td>
+          <td>{{ user.fullName || '—' }}</td>
+          <td><span class="badge">{{ user.role }}</span></td>
+          <td class="actions">
+            <a [routerLink]="['/admin/istifadeciler', user.id, 'edit']">Redaktə</a>
+            <button type="button" class="link-btn danger" (click)="remove(user)" [disabled]="deletingId === user.id">
+              {{ deletingId === user.id ? 'Silinir…' : 'Sil' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>{{ isEdit ? 'İstifadəçini redaktə et' : 'Yeni istifadəçi' }}</h2>
+      <p class="note">Yalnız admin rolu ilə istifadəçi əlavə edilir.</p>
+    </div>
+    <div class="head-actions">
+      <a class="btn ghost" routerLink="/admin/istifadeciler">Geri</a>
+      <button class="btn primary" type="button" (click)="submit($event)" [disabled]="saving">
+        {{ saving ? 'Saxlanılır…' : isEdit ? 'Yenilə' : 'Yarat' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="state" *ngIf="loading">Yüklənir…</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+  <div class="state success" *ngIf="success">{{ success }}</div>
+
+  <form class="panel form" [formGroup]="form" (ngSubmit)="submit($event)" *ngIf="!loading">
+    <label [class.invalid]="submitted && form.controls.username.invalid">
+      <span>İstifadəçi adı *</span>
+      <input formControlName="username" autocomplete="username" />
+      <small *ngIf="submitted && form.controls.username.invalid">İstifadəçi adı tələb olunur.</small>
+    </label>
+
+    <label [class.invalid]="submitted && form.controls.password.invalid">
+      <span>Şifrə {{ isEdit ? '' : '*' }}</span>
+      <input type="password" formControlName="password" autocomplete="new-password" />
+      <small *ngIf="isEdit">Redaktə zamanı boş buraxsanız, şifrə dəyişməyəcək.</small>
+      <small *ngIf="submitted && !isEdit && form.controls.password.invalid">Şifrə tələb olunur (min. 4 simvol).</small>
+    </label>
+
+    <label>
+      <span>Ad Soyad</span>
+      <input formControlName="fullName" />
+    </label>
+
+    <div class="actions">
+      <button class="btn primary" type="button" (click)="submit($event)" [disabled]="saving">
+        {{ saving ? 'Saxlanılır…' : isEdit ? 'Yenilə' : 'Yarat' }}
+      </button>
+      <span class="inline-msg error" *ngIf="error">{{ error }}</span>
+      <span class="inline-msg success" *ngIf="success">{{ success }}</span>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>Vəkillər</h2>
+      <p>Komanda üzvlərini idarə edin.</p>
+    </div>
+    <a class="btn primary" routerLink="/admin/vekiller/new">Yeni vəkil</a>
+  </div>
+
+  <div class="state" *ngIf="loading">Yüklənir…</div>
+  <div class="state error" *ngIf="!loading && error">{{ error }}</div>
+
+  <div class="empty panel" *ngIf="!loading && !error && !lawyers.length">
+    Hələ vəkil yoxdur. <a routerLink="/admin/vekiller/new">İlk vəkili əlavə edin</a>.
+  </div>
+
+  <div class="table-wrap panel" *ngIf="!loading && lawyers.length">
+    <table>
+      <thead>
+        <tr>
+          <th>Ad</th>
+          <th>Soyad</th>
+          <th>İstiqamət</th>
+          <th>Vəzifə</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of lawyers">
+          <td>{{ item.firstName }}</td>
+          <td>{{ item.lastName }}</td>
+          <td>{{ item.direction || '—' }}</td>
+          <td>{{ item.title || '—' }}</td>
+          <td>
+            <span class="badge" [class.published]="item.status === 'published'">
+              {{ item.status === 'published' ? 'Dərc edilib' : 'Qaralama' }}
+            </span>
+          </td>
+          <td class="actions">
+            <a [routerLink]="['/admin/vekiller', item.id, 'edit']">Redaktə</a>
+            <button type="button" class="link-btn danger" (click)="remove(item)" [disabled]="deletingId === item.id">
+              {{ deletingId === item.id ? 'Silinir…' : 'Sil' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

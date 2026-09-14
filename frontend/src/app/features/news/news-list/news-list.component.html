@@ -1,0 +1,49 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h2>Xəbərlər</h2>
+      <p>Xəbərləri yaradın, redaktə edin və dərc edin.</p>
+    </div>
+    <a class="btn primary" routerLink="/admin/xeberler/new">Yeni xəbər</a>
+  </div>
+
+  <div class="state" *ngIf="loading">Yüklənir…</div>
+  <div class="state error" *ngIf="!loading && error">{{ error }}</div>
+
+  <div class="empty panel" *ngIf="!loading && !error && !news.length">
+    Hələ xəbər yoxdur. <a routerLink="/admin/xeberler/new">İlk xəbəri əlavə edin</a>.
+  </div>
+
+  <div class="table-wrap panel" *ngIf="!loading && news.length">
+    <table>
+      <thead>
+        <tr>
+          <th>Ad</th>
+          <th>Qısa ad</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of news">
+          <td>
+            <strong>{{ item.title }}</strong>
+            <div class="muted">/{{ item.slug }}</div>
+          </td>
+          <td>{{ item.shortTitle || '—' }}</td>
+          <td>
+            <span class="badge" [class.published]="item.status === 'published'">
+              {{ item.status === 'published' ? 'Dərc edilib' : 'Qaralama' }}
+            </span>
+          </td>
+          <td class="actions">
+            <a [routerLink]="['/admin/xeberler', item.id, 'edit']">Redaktə</a>
+            <button type="button" class="link-btn danger" (click)="remove(item)" [disabled]="deletingId === item.id">
+              {{ deletingId === item.id ? 'Silinir…' : 'Sil' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
