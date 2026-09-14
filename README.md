@@ -54,6 +54,24 @@ Open [http://127.0.0.1:4317](http://127.0.0.1:4317).
 
 Edits in the admin UI rewrite these files immediately, so changes survive API restarts.
 
+## Showcase / production serve
+
+Build the Angular app and serve UI + API from one Node process:
+
+```bash
+npm run install:all
+npm run build --prefix frontend -- --configuration=production
+PORT=4535 npm run start:api
+```
+
+Then open `http://127.0.0.1:4535`. The API is available under `/api`.
+
+For a temporary public demo URL (while the process is running):
+
+```bash
+cloudflared tunnel --url http://127.0.0.1:4535
+```
+
 ## Project layout
 
 ```

@@ -5,9 +5,11 @@
   "description": "Angular 14 admin panel with Node.js JSON-file API",
   "scripts": {
     "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "build": "npm run build --prefix frontend -- --configuration=production",
     "dev:api": "npm run dev --prefix backend",
     "dev:web": "npm start --prefix frontend",
     "start:api": "npm start --prefix backend",
-    "start:web": "npm start --prefix frontend"
+    "start:web": "npm start --prefix frontend",
+    "start:showcase": "npm run build && PORT=4535 npm run start:api"
   }
 }
