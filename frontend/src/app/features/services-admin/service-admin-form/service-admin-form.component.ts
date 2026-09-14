@@ -20,7 +20,7 @@ export class ServiceAdminFormComponent implements OnInit {
   form = this.fb.group({
     title: ['', Validators.required],
     summary: [''],
-    content: [''],
+    content: ['', Validators.required],
     coverImage: [''],
     icon: [''],
     order: [null as number | null],

@@ -4,14 +4,14 @@
       <h2>Blogs</h2>
       <p>Create, edit, publish, and archive posts.</p>
     </div>
-    <a class="btn primary" routerLink="/blogs/new">New blog</a>
+    <a class="btn primary" routerLink="/admin/blogs/new">New blog</a>
   </div>
 
   <div class="state" *ngIf="loading">Loading blogs…</div>
   <div class="state error" *ngIf="!loading && error">{{ error }}</div>
 
   <div class="empty panel" *ngIf="!loading && !error && !blogs.length">
-    No blogs yet. <a routerLink="/blogs/new">Write the first post</a>.
+    No blogs yet. <a routerLink="/admin/blogs/new">Write the first post</a>.
   </div>
 
   <div class="table-wrap panel" *ngIf="!loading && blogs.length">

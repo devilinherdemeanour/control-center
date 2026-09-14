@@ -50,9 +50,10 @@
       <textarea formControlName="summary" rows="3"></textarea>
     </label>
 
-    <label>
-      <span>Məzmun</span>
+    <label [class.invalid]="submitted && form.controls.content.invalid">
+      <span>Etraflı məlumat *</span>
       <textarea formControlName="content" rows="14"></textarea>
+      <small *ngIf="submitted && form.controls.content.invalid">Məzmun tələb olunur.</small>
     </label>
 
     <div class="grid two">

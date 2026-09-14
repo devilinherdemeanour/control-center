@@ -4,14 +4,14 @@
       <h2>Pages</h2>
       <p>Manage static site pages like Home and Contact.</p>
     </div>
-    <a class="btn primary" routerLink="/pages/new">New page</a>
+    <a class="btn primary" routerLink="/admin/pages/new">New page</a>
   </div>
 
   <div class="state" *ngIf="loading">Loading pages…</div>
   <div class="state error" *ngIf="!loading && error">{{ error }}</div>
 
   <div class="empty panel" *ngIf="!loading && !error && !pages.length">
-    No pages yet. <a routerLink="/pages/new">Create one</a>.
+    No pages yet. <a routerLink="/admin/pages/new">Create one</a>.
   </div>
 
   <div class="table-wrap panel" *ngIf="!loading && pages.length">

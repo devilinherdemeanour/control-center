@@ -2,47 +2,62 @@
   <div class="page-head">
     <div>
       <h2>Dashboard</h2>
-      <p>Snapshot of content stored in JSON files.</p>
+      <p>Sayt kontentinin ümumi görünüşü.</p>
     </div>
   </div>
 
-  <div class="state" *ngIf="loading">Loading overview…</div>
+  <div class="state" *ngIf="loading">Yüklənir…</div>
   <div class="state error" *ngIf="!loading && error">{{ error }}</div>
 
   <ng-container *ngIf="!loading && summary">
     <section class="stats">
       <article>
-        <p class="label">Blog posts</p>
-        <p class="value">{{ summary.counts.blogs }}</p>
-        <p class="meta">{{ summary.counts.publishedBlogs }} published · {{ summary.counts.draftBlogs }} draft</p>
+        <p class="label">Xəbərlər</p>
+        <p class="value">{{ summary.counts.news || 0 }}</p>
+        <p class="meta"><a routerLink="/admin/xeberler">İdarə et</a></p>
       </article>
       <article>
-        <p class="label">Pages</p>
-        <p class="value">{{ summary.counts.pages }}</p>
-        <p class="meta">{{ summary.counts.publishedPages }} published</p>
+        <p class="label">Xidmətlər</p>
+        <p class="value">{{ summary.counts.services || 0 }}</p>
+        <p class="meta"><a routerLink="/admin/xidmetler">İdarə et</a></p>
       </article>
       <article>
-        <p class="label">Site</p>
+        <p class="label">Vəkillər</p>
+        <p class="value">{{ summary.counts.lawyers || 0 }}</p>
+        <p class="meta"><a routerLink="/admin/vekiller">İdarə et</a></p>
+      </article>
+      <article>
+        <p class="label">İstifadəçilər</p>
+        <p class="value">{{ summary.counts.users || 0 }}</p>
+        <p class="meta"><a routerLink="/admin/istifadeciler">İdarə et</a></p>
+      </article>
+      <article>
+        <p class="label">Sayt</p>
         <p class="value site">{{ summary.siteName }}</p>
-        <p class="meta">Settings updated {{ summary.settingsUpdatedAt ? (summary.settingsUpdatedAt | date: 'medium') : 'never' }}</p>
+        <p class="meta">
+          Əlaqə:
+          {{ summary.contactUpdatedAt ? (summary.contactUpdatedAt | date: 'medium') : 'yoxdur' }}
+        </p>
       </article>
     </section>
 
     <section class="panel">
       <div class="panel-head">
-        <h3>Recent blogs</h3>
-        <a routerLink="/blogs">Manage blogs</a>
+        <h3>Son xəbərlər</h3>
+        <a routerLink="/admin/xeberler">Hamısına bax</a>
       </div>
 
-      <div class="empty" *ngIf="!summary.recentBlogs.length">No blog posts yet. Create your first post.</div>
+      <div class="empty" *ngIf="!(summary.recentNews && summary.recentNews.length)">
+        Hələ xəbər yoxdur.
+      </div>
 
-      <ul class="recent" *ngIf="summary.recentBlogs.length">
-        <li *ngFor="let blog of summary.recentBlogs">
+      <ul class="recent" *ngIf="summary.recentNews && summary.recentNews.length">
+        <li *ngFor="let item of summary.recentNews">
           <div>
-            <strong>{{ blog.title }}</strong>
-            <p>{{ blog.excerpt || 'No excerpt' }}</p>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.shortTitle || item.slug }}</p>
           </div>
-          <span class="badge" [class.published]="blog.status === 'published'">{{ blog.status }}</span>
+          <span class="badge" [class.published]="item.status === 'published'">{{ item.status }}</span>
         </li>
       </ul>
     </section>

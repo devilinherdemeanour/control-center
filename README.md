@@ -1,94 +1,60 @@
-# Website Admin Panel
+# Aslan İsmayılov and Partners
 
-Angular 14 admin UI + Node.js Express API. Content is persisted in JSON files under `backend/data/` (a lightweight stand-in for a database).
+Hüquq firması üçün ictimai sayt + admin panel.
 
-## Features
+- **Frontend:** Angular 14
+- **Backend:** Node.js (Express)
+- **Storage:** JSON fayllar (`backend/data/`)
 
-- **Dashboard** — counts and recent blogs
-- **Blogs** — create, edit, publish/draft, delete
-- **About page** — headline, body, mission, vision, team intro
-- **Pages** — static pages with SEO fields
-- **Settings** — site name, tagline, contact, social links
+## Modullar
 
-## Requirements
+### İctimai sayt
+- Ana səhifə, Haqqımızda, Xidmətlər, Komanda (vəkillər), Bloq (xəbərlər), Əlaqə (xəritə ilə)
 
-- Node.js 16+ (Node 16 recommended for Angular 14)
-- npm 8+
+### Admin (`/admin`)
+| Modul | Yol | Sahələr |
+|-------|-----|---------|
+| Xəbərlər | `/admin/xeberler` | ad, qısa ad, cover şəkil, ətraflı məzmun |
+| Xidmətlər | `/admin/xidmetler` | ad, ətraflı məzmun (editor) |
+| Vəkillər | `/admin/vekiller` | ad, soyad, istiqamət, ətraflı məlumat |
+| Əlaqə | `/admin/elaqe` | telefon, e-poçt, ünvan, iş saatları, xəritə, sosial |
+| İstifadəçilər | `/admin/istifadeciler` | yalnız admin: username + şifrə |
 
-## Quick start
+**Login:** `admin` / `admin123` → `/admin/login`
+
+## İşə salma
 
 ```bash
-# install dependencies
 npm run install:all
 
-# terminal 1 — API on http://127.0.0.1:4521
+# API — http://127.0.0.1:4521
 npm run start:api
 
-# terminal 2 — Angular admin on http://127.0.0.1:4317
+# Angular — http://127.0.0.1:4317
 npm run start:web
 ```
 
-Open [http://127.0.0.1:4317](http://127.0.0.1:4317).
-
-## API overview
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/health` | Health check |
-| GET | `/api/dashboard` | Dashboard summary |
-| GET/POST | `/api/blogs` | List / create blogs |
-| GET/PUT/DELETE | `/api/blogs/:id` | Read / update / delete blog |
-| GET/PUT | `/api/about` | About page content |
-| GET/POST | `/api/pages` | List / create pages |
-| GET/PUT/DELETE | `/api/pages/:id` | Read / update / delete page |
-| GET/PUT | `/api/settings` | Site settings |
-
-## Data files
-
-| File | Collection |
-|------|------------|
-| `backend/data/blogs.json` | Blog posts |
-| `backend/data/about.json` | About page |
-| `backend/data/pages.json` | Static pages |
-| `backend/data/settings.json` | Site settings |
-
-Edits in the admin UI rewrite these files immediately, so changes survive API restarts.
-
-## Long-lived hosting (Render free)
-
-Agent tunnels only last while this Cloud Agent is running. For days/weeks of uptime, deploy to [Render](https://render.com) (free plan, no credit card):
-
-1. Push this repo to **GitHub** (Render connects to GitHub/GitLab/Bitbucket; Origin alone is not enough).
-2. In Render: **New → Blueprint** (or Web Service), connect the repo.
-3. Render will pick up `render.yaml` + `Dockerfile` and deploy a free web service.
-4. Open the `*.onrender.com` URL Render assigns.
-
-Notes:
-- Free instances **sleep after ~15 minutes** of no traffic (wake takes ~1 minute).
-- JSON file data resets if the instance is rebuilt unless you add a persistent disk later.
-- Local demo command: `docker build -t control-center . && docker run -p 4535:4535 control-center`
-
-## Showcase / production serve (local or temporary tunnel)
-
-Build the Angular app and serve UI + API from one Node process:
+Bir prosesdə (build + API + UI):
 
 ```bash
-npm run install:all
-npm run build --prefix frontend -- --configuration=production
+npm run build
 PORT=4535 npm run start:api
+# http://127.0.0.1:4535
 ```
 
-Then open `http://127.0.0.1:4535`. The API is available under `/api`.
+## API
 
-Temporary public URL (dies when the machine stops):
+| Path | Təsvir |
+|------|--------|
+| `POST /api/users/login` | Admin giriş |
+| `GET/POST/PUT/DELETE /api/news` | Xəbərlər |
+| `GET/POST/PUT/DELETE /api/services` | Xidmətlər |
+| `GET/POST/PUT/DELETE /api/lawyers` | Vəkillər |
+| `GET/PUT /api/contact` | Əlaqə |
+| `GET/POST/PUT/DELETE /api/users` | Admin istifadəçilər (JWT) |
 
-```bash
-cloudflared tunnel --url http://127.0.0.1:4535
-```
+Yazma əməliyyatları JWT tələb edir (`Authorization: Bearer …`).
 
-## Project layout
+## Data faylları
 
-```
-backend/          Express API + JSON store
-frontend/         Angular 14 admin app
-```
+`backend/data/news.json`, `services.json`, `lawyers.json`, `contact.json`, `users.json`, `about.json`, `settings.json`
