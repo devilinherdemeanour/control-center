@@ -46,16 +46,14 @@
   flex-shrink: 0;
 }
 
-.brand-emblem {
-  width: 2.5rem;
-  height: 2.5rem;
+.brand-logo {
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
-  background: var(--ink);
-  color: var(--sand);
-  display: grid;
-  place-items: center;
-  font-size: 0.85rem;
-  font-weight: 700;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.08);
+  flex-shrink: 0;
 }
 
 .brand-text {
@@ -201,6 +199,21 @@
   padding: 2.5rem 1.5rem;
   display: grid;
   gap: 1.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.footer-logo {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  flex-shrink: 0;
 }
 
 .footer-name {

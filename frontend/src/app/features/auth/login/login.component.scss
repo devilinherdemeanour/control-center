@@ -16,17 +16,15 @@
   margin-bottom: 1.5rem;
 }
 
-.brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.85rem;
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 700;
-  background: linear-gradient(145deg, #3aa6b4, #1f6f7a);
-  color: #eef8fa;
-  margin-bottom: 1rem;
+.brand-logo {
+  display: block;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(16, 35, 45, 0.12);
 }
 
 .login-head h1 {

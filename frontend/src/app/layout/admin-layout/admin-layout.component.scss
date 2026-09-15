@@ -24,16 +24,13 @@
   padding: 0.25rem 0.4rem;
 }
 
-.brand-mark {
+.brand-logo {
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 0.7rem;
-  display: grid;
-  place-items: center;
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 700;
-  background: linear-gradient(145deg, #3aa6b4, #1f6f7a);
-  color: #eef8fa;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  flex-shrink: 0;
 }
 
 .brand-name {

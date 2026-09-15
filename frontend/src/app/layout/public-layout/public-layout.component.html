@@ -2,7 +2,13 @@
   <header class="site-header">
     <div class="header-inner">
       <a routerLink="/" class="brand" (click)="closeNav()">
-        <span class="brand-emblem" aria-hidden="true">A</span>
+        <img
+          class="brand-logo"
+          src="assets/brand/logo-256.png"
+          width="48"
+          height="48"
+          alt="Aslan Ismayilov and Partners"
+        />
         <span class="brand-text">ASLAN ISMAYILOV AND PARTNERS</span>
       </a>
 
@@ -54,8 +60,17 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <p class="footer-name">ASLAN ISMAYILOV AND PARTNERS</p>
-        <p class="footer-tagline">Peşəkarlıq • Etibar • Nəticə</p>
+        <img
+          class="footer-logo"
+          src="assets/brand/logo-256.png"
+          width="56"
+          height="56"
+          alt="Aslan Ismayilov and Partners"
+        />
+        <div>
+          <p class="footer-name">ASLAN ISMAYILOV AND PARTNERS</p>
+          <p class="footer-tagline">Peşəkarlıq • Etibar • Nəticə</p>
+        </div>
       </div>
       <nav class="footer-nav" aria-label="Footer naviqasiya">
         <a *ngFor="let link of navLinks" [routerLink]="link.path">{{ link.label }}</a>

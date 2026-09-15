@@ -1,7 +1,7 @@
 {
-  "siteName": "Aslan İsmayılov and Partners",
+  "siteName": "Aslan Ismayilov and Partners",
   "tagline": "Peşəkarlıq • Etibar • Nəticə",
-  "logoUrl": "",
+  "logoUrl": "/assets/brand/logo-256.png",
   "primaryColor": "#111111",
   "contactEmail": "info@aslanismayilov.az",
   "social": {
@@ -9,5 +9,5 @@
     "linkedin": "",
     "github": ""
   },
-  "updatedAt": "2026-09-14T10:00:00.000Z"
+  "updatedAt": "2026-09-15T06:52:00.000Z"
 }
