@@ -78,11 +78,16 @@
       <textarea id="blog-excerpt" formControlName="excerpt" rows="2"></textarea>
     </label>
 
-    <label [class.invalid]="submitted && form.controls.content.invalid">
+    <div class="editor-field" [class.invalid]="submitted && form.controls.content.invalid">
       <span>Content *</span>
-      <textarea id="blog-content" formControlName="content" rows="8"></textarea>
+      <angular-editor
+        id="blog-content"
+        formControlName="content"
+        [config]="editorConfig"
+        placeholder="Blog məzmununu yazın…"
+      ></angular-editor>
       <small *ngIf="submitted && form.controls.content.invalid">Content is required.</small>
-    </label>
+    </div>
 
     <div class="actions">
       <button

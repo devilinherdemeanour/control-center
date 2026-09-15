@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Lawyer } from '../../../core/models/content.models';
 import { LawyerService } from '../../../core/services/lawyer.service';
+import { toDisplayHtml } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-lawyer-detail',
@@ -33,10 +34,10 @@ export class LawyerDetailComponent implements OnInit {
   }
 
   get formattedDetails(): string {
-    if (!this.lawyer?.details) return '';
-    return this.lawyer.details
-      .split('\n\n')
-      .map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`)
-      .join('');
+    return toDisplayHtml(this.lawyer?.details);
+  }
+
+  get formattedBio(): string {
+    return toDisplayHtml(this.lawyer?.bio);
   }
 }

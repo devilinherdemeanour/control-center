@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsItem } from '../../../core/models/content.models';
 import { NewsService } from '../../../core/services/news.service';
+import { stripHtml } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-news-page',
@@ -23,5 +24,13 @@ export class NewsPageComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  excerpt(item: NewsItem): string {
+    if (item.shortTitle) {
+      return item.shortTitle;
+    }
+    const plain = stripHtml(item.content);
+    return plain.length > 120 ? `${plain.slice(0, 120)}…` : plain;
   }
 }

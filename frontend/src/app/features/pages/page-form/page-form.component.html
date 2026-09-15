@@ -40,10 +40,15 @@
       <textarea formControlName="seoDescription" rows="3"></textarea>
     </label>
 
-    <label>
+    <div class="editor-field">
       <span>Content</span>
-      <textarea formControlName="content" rows="12"></textarea>
-    </label>
+      <angular-editor
+        id="page-content"
+        formControlName="content"
+        [config]="editorConfig"
+        placeholder="Səhifə məzmunu…"
+      ></angular-editor>
+    </div>
 
     <button class="btn primary" type="submit" [disabled]="saving">
       {{ saving ? 'Saving…' : isEdit ? 'Update page' : 'Create page' }}

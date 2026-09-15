@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsItem } from '../../../core/models/content.models';
 import { NewsService } from '../../../core/services/news.service';
+import { toDisplayHtml } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-news-detail',
@@ -33,10 +34,6 @@ export class NewsDetailComponent implements OnInit {
   }
 
   get formattedContent(): string {
-    if (!this.item?.content) return '';
-    return this.item.content
-      .split('\n\n')
-      .map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`)
-      .join('');
+    return toDisplayHtml(this.item?.content);
   }
 }

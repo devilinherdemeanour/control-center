@@ -13,15 +13,15 @@
     <div class="values">
       <article *ngIf="about.mission">
         <h2>Missiya</h2>
-        <p>{{ about.mission }}</p>
+        <div [innerHTML]="formattedMission"></div>
       </article>
       <article *ngIf="about.vision">
         <h2>Vizyon</h2>
-        <p>{{ about.vision }}</p>
+        <div [innerHTML]="formattedVision"></div>
       </article>
     </div>
 
-    <p *ngIf="about.teamIntro" class="team-intro">{{ about.teamIntro }}</p>
+    <div *ngIf="about.teamIntro" class="team-intro" [innerHTML]="formattedTeamIntro"></div>
 
     <a routerLink="/komanda" class="btn">Komandamızla tanış olun →</a>
   </ng-container>

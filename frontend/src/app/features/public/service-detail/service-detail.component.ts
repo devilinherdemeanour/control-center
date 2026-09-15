@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirmService } from '../../../core/models/content.models';
 import { FirmServicesService } from '../../../core/services/firm-services.service';
+import { toDisplayHtml } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-service-detail',
@@ -33,10 +34,6 @@ export class ServiceDetailComponent implements OnInit {
   }
 
   get formattedContent(): string {
-    if (!this.service?.content) return '';
-    return this.service.content
-      .split('\n\n')
-      .map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`)
-      .join('');
+    return toDisplayHtml(this.service?.content);
   }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewsService } from '../../../core/services/news.service';
 import { NewsItem } from '../../../core/models/content.models';
+import { richTextEditorConfig } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-news-form',
@@ -16,6 +17,7 @@ export class NewsFormComponent implements OnInit {
   error = '';
   success = '';
   submitted = false;
+  readonly editorConfig = richTextEditorConfig;
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(200)]],

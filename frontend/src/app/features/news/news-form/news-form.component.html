@@ -61,11 +61,16 @@
       <input formControlName="coverImage" placeholder="https://…" />
     </label>
 
-    <label [class.invalid]="submitted && form.controls.content.invalid">
+    <div class="editor-field" [class.invalid]="submitted && form.controls.content.invalid">
       <span>Etraflı məlumat *</span>
-      <textarea formControlName="content" rows="14"></textarea>
+      <angular-editor
+        id="news-content"
+        formControlName="content"
+        [config]="editorConfig"
+        placeholder="Xəbərin ətraflı məzmununu yazın…"
+      ></angular-editor>
       <small *ngIf="submitted && form.controls.content.invalid">Məzmun tələb olunur.</small>
-    </label>
+    </div>
 
     <div class="actions">
       <button class="btn primary" type="button" (click)="submit($event)" [disabled]="saving">

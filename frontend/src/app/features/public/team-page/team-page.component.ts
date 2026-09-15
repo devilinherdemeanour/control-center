@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Lawyer } from '../../../core/models/content.models';
 import { LawyerService } from '../../../core/services/lawyer.service';
+import { stripHtml } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-team-page',
@@ -23,5 +24,9 @@ export class TeamPageComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  bioText(lawyer: Lawyer): string {
+    return stripHtml(lawyer.bio);
   }
 }

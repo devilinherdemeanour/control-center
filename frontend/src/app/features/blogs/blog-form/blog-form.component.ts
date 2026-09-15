@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '../../../core/services/blog.service';
 import { Blog } from '../../../core/models/content.models';
+import { richTextEditorConfig } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-blog-form',
@@ -16,6 +17,7 @@ export class BlogFormComponent implements OnInit {
   error = '';
   success = '';
   submitted = false;
+  readonly editorConfig = richTextEditorConfig;
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(160)]],

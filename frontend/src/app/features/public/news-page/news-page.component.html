@@ -13,7 +13,7 @@
       <div class="card-body">
         <time *ngIf="item.createdAt">{{ item.createdAt | date: 'd MMM y' }}</time>
         <h2>{{ item.title }}</h2>
-        <p>{{ item.shortTitle || item.content.slice(0, 120) }}...</p>
+        <p>{{ excerpt(item) }}</p>
         <span class="link">Oxu →</span>
       </div>
     </a>

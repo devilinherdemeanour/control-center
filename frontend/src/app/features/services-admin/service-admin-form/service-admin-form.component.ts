@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirmServicesService } from '../../../core/services/firm-services.service';
 import { FirmService } from '../../../core/models/content.models';
+import { richTextEditorConfig } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-service-admin-form',
@@ -16,6 +17,7 @@ export class ServiceAdminFormComponent implements OnInit {
   error = '';
   success = '';
   submitted = false;
+  readonly editorConfig = richTextEditorConfig;
 
   form = this.fb.group({
     title: ['', Validators.required],

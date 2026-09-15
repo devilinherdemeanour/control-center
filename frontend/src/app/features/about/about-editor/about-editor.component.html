@@ -30,24 +30,41 @@
       <span>Subheadline</span>
       <input formControlName="subheadline" />
     </label>
-    <label>
+    <div class="editor-field">
       <span>Body</span>
-      <textarea formControlName="body" rows="6"></textarea>
-    </label>
-    <div class="grid two">
-      <label>
-        <span>Mission</span>
-        <textarea formControlName="mission" rows="3"></textarea>
-      </label>
-      <label>
-        <span>Vision</span>
-        <textarea formControlName="vision" rows="3"></textarea>
-      </label>
+      <angular-editor
+        id="about-body"
+        formControlName="body"
+        [config]="editorConfig"
+        placeholder="Haqqımızda mətn…"
+      ></angular-editor>
     </div>
-    <label>
+    <div class="grid two">
+      <div class="editor-field">
+        <span>Mission</span>
+        <angular-editor
+          id="about-mission"
+          formControlName="mission"
+          [config]="compactEditorConfig"
+        ></angular-editor>
+      </div>
+      <div class="editor-field">
+        <span>Vision</span>
+        <angular-editor
+          id="about-vision"
+          formControlName="vision"
+          [config]="compactEditorConfig"
+        ></angular-editor>
+      </div>
+    </div>
+    <div class="editor-field">
       <span>Team intro</span>
-      <textarea formControlName="teamIntro" rows="3"></textarea>
-    </label>
+      <angular-editor
+        id="about-team"
+        formControlName="teamIntro"
+        [config]="compactEditorConfig"
+      ></angular-editor>
+    </div>
 
     <div class="actions">
       <button

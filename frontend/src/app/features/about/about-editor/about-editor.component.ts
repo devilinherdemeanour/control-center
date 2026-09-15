@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AboutService } from '../../../core/services/about.service';
+import { richTextEditorCompactConfig, richTextEditorConfig } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-about-editor',
@@ -14,6 +15,8 @@ export class AboutEditorComponent implements OnInit {
   saving = false;
   error = '';
   success = '';
+  readonly editorConfig = richTextEditorConfig;
+  readonly compactEditorConfig = richTextEditorCompactConfig;
 
   form = this.fb.group({
     headline: [''],

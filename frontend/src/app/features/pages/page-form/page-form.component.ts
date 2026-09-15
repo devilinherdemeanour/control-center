@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageService } from '../../../core/services/page.service';
 import { Page } from '../../../core/models/content.models';
+import { richTextEditorConfig } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-page-form',
@@ -14,6 +15,7 @@ export class PageFormComponent implements OnInit {
   loading = false;
   saving = false;
   error = '';
+  readonly editorConfig = richTextEditorConfig;
 
   form = this.fb.group({
     title: ['', Validators.required],

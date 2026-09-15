@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LawyerService } from '../../../core/services/lawyer.service';
 import { Lawyer } from '../../../core/models/content.models';
+import { richTextEditorCompactConfig, richTextEditorConfig } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-lawyer-admin-form',
@@ -16,6 +17,8 @@ export class LawyerAdminFormComponent implements OnInit {
   error = '';
   success = '';
   submitted = false;
+  readonly editorConfig = richTextEditorConfig;
+  readonly bioEditorConfig = richTextEditorCompactConfig;
 
   form = this.fb.group({
     firstName: ['', Validators.required],

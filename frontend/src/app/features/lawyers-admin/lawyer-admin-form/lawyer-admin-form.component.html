@@ -68,15 +68,25 @@
       <input formControlName="photo" placeholder="https://…" />
     </label>
 
-    <label>
+    <div class="editor-field">
       <span>Qısa bio</span>
-      <textarea formControlName="bio" rows="3"></textarea>
-    </label>
+      <angular-editor
+        id="lawyer-bio"
+        formControlName="bio"
+        [config]="bioEditorConfig"
+        placeholder="Qısa təqdimat…"
+      ></angular-editor>
+    </div>
 
-    <label>
+    <div class="editor-field">
       <span>Etraflı məlumat</span>
-      <textarea formControlName="details" rows="14"></textarea>
-    </label>
+      <angular-editor
+        id="lawyer-details"
+        formControlName="details"
+        [config]="editorConfig"
+        placeholder="Vəkil haqqında ətraflı məlumat…"
+      ></angular-editor>
+    </div>
 
     <div class="grid two">
       <label>

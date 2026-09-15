@@ -40,3 +40,41 @@ code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.9em;
 }
+
+/* Rich text editor (admin forms) */
+.angular-editor-wrapper {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(16, 35, 45, 0.12);
+  background: #fff;
+}
+
+.angular-editor-toolbar {
+  border-bottom: 1px solid rgba(16, 35, 45, 0.1) !important;
+  background: #f6f8f9 !important;
+}
+
+.angular-editor-textarea {
+  min-height: 160px !important;
+  padding: 0.85rem 1rem !important;
+  font-family: 'Manrope', 'Segoe UI', sans-serif !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+  color: #10232d !important;
+}
+
+.form .editor-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form .editor-field > span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3a4c55;
+}
+
+.form .editor-field.invalid > span {
+  color: #b42318;
+}

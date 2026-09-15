@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutContent } from '../../../core/models/content.models';
 import { AboutService } from '../../../core/services/about.service';
+import { toDisplayHtml } from '../../../shared/rich-text';
 
 @Component({
   selector: 'app-about-page',
@@ -26,10 +27,18 @@ export class AboutPageComponent implements OnInit {
   }
 
   get formattedBody(): string {
-    if (!this.about?.body) return '';
-    return this.about.body
-      .split('\n\n')
-      .map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`)
-      .join('');
+    return toDisplayHtml(this.about?.body);
+  }
+
+  get formattedMission(): string {
+    return toDisplayHtml(this.about?.mission);
+  }
+
+  get formattedVision(): string {
+    return toDisplayHtml(this.about?.vision);
+  }
+
+  get formattedTeamIntro(): string {
+    return toDisplayHtml(this.about?.teamIntro);
   }
 }
